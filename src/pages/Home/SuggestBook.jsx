@@ -61,8 +61,12 @@ const BookItem = ({ index, url, name, book_id }) => {
         height: height,
         boxShadow: "0px 0px 19px 6px rgba(0,0,0,0.2)",
         borderRadius: "8px",
-        transition: "margin-left 0.5s ease-out",
+        transition: "all 0.2s",
+        borderColor: "primary.main",
+
         ":hover": {
+          borderWidth: "4px",
+          borderStyle: "solid",
           marginLeft: index ? -1 : 0,
         },
       }}
