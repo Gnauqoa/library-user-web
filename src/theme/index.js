@@ -6,20 +6,10 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#fbb326",
-      50: "#fff2db",
-      100: "#fedea5",
-      200: "#fdc969",
-      300: "#fbb326",
-      400: "#f9a300",
+      main: "#2E4958",
     },
     secondary: {
-      main: "#056838",
-      50: "#e7f7ed",
-      100: "#c5ead3",
-      200: "#9fddb8",
-      300: "#76d19b",
-      400: "#55c686",
+      main: "#266E96",
     },
     text_neutral: {
       main: "#4A4553",
@@ -61,7 +51,7 @@ const theme = createTheme({
           props: { variant: "primary filled" },
           style: {
             color: "#FFFFFF",
-            background: "#fbb326",
+            background: "#2E4958",
             ":hover": {
               background: "#f9a300",
             },
