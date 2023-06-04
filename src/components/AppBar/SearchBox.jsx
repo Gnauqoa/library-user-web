@@ -2,7 +2,7 @@ import { IconButton, SvgIcon } from "@mui/material";
 import React from "react";
 import { ReactComponent as IconSearch } from "assets/icon/icon_search.svg";
 
-const SearchBox = ({}) => {
+const SearchBox = () => {
   return (
     <div className="flex flex-row">
       <div className="flex flex-row w-[600px] items-center gap-4 pl-4 pr-[5px] py-[5px] bg-[#fff] rounded-[25px] overflow-hidden">
