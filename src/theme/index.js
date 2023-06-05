@@ -50,13 +50,17 @@ const theme = createTheme({
         {
           props: { variant: "primary filled" },
           style: {
+            width: "auto",
+            height: "auto",
+            minHeight: 0,
+            minWidth: 0,
             color: "#FFFFFF",
             background: "#2E4958",
             ":hover": {
-              background: "#f9a300",
+              background: "#242D3F",
             },
             ":focus": {
-              background: "#f9a300",
+              background: "#242D3F",
               borderColor: "#fff2db",
             },
             ":disabled": {
@@ -68,6 +72,10 @@ const theme = createTheme({
         {
           props: { variant: "primary link" },
           style: {
+            width: "auto",
+            height: "auto",
+            minHeight: 0,
+            minWidth: 0,
             color: "#FFAB00",
             background: "transparent",
             ":hover": {
