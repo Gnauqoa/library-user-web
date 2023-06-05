@@ -1,15 +1,19 @@
 import React from "react";
-import Logo from "assets/img/logo.svg";
 import { SvgIcon, Typography } from "@mui/material";
 import { ReactComponent as Instagram } from "assets/img/logo_instagram.svg";
 import { ReactComponent as Facebook } from "assets/img/logo_facebook.svg";
 import { ReactComponent as Google } from "assets/img/logo_google.svg";
+import { ReactComponent as Logo } from "assets/img/logo.svg";
 
 const Footer = () => {
   return (
     <div className="flex flex-col pt-10 gap-[60px] pb-10 bg-[#DEDDE14D]">
       <div className="flex flex-row gap-[90px] justify-center items-center">
-        <img alt="" src={Logo} className="h-[70px]" />
+        <SvgIcon
+          inheritViewBox={true}
+          sx={{ height: 60, width: "auto", color: "#0F3245" }}
+          component={Logo}
+        />
         <div className="flex flex-col gap-4">
           <Typography
             sx={{
