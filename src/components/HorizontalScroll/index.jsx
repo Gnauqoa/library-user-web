@@ -25,7 +25,7 @@ const HorizontalScroll = ({ children }) => {
     setScrollBarLoc(e.currentTarget.scrollLeft);
   };
   return (
-    <div className="flex flex-row relative w-full justify-center items-center">
+    <div className="flex flex-row w-full justify-center items-center ">
       <div className="flex flex-col pr-4">
         <IconButton
           onClick={clickLeftArrow}
@@ -43,7 +43,7 @@ const HorizontalScroll = ({ children }) => {
       <div
         ref={ScrollBar}
         onScroll={(e) => onScroll(e)}
-        className="flex flex-row w-full gap-[24px] scroll-smooth overflow-y-auto hide-scrollbars"
+        className="flex flex-row w-full gap-[24px] p-4 scroll-smooth overflow-auto hide-scrollBar"
       >
         {children}
       </div>

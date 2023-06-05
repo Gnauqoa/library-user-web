@@ -44,9 +44,9 @@ const NewBook = () => {
         <div className="flex flex-row items-center relative">
           {data.items.map((book_item, index) => (
             <BookItem
-              key={`${book_item.book_id}`}
+              key={`${book_item.book.book_id}`}
               index={index}
-              url={book_item.img_url}
+              url={book_item.book.img_url}
             />
           ))}
         </div>
