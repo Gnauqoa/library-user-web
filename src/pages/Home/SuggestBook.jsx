@@ -1,7 +1,14 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { getBookSuggest } from "services/home";
 
 const SuggestBook = () => {
+  const { data, isFetched } = useQuery({
+    queryKey: ["/v1/book/hotBook"],
+    initialData: [],
+    queryFn: getBookSuggest,
+  });
   return (
     <div className="flex flex-row gap-[144px] bg-[#A6BBCD] py-[140px] justify-center">
       <div className="flex flex-col gap-6">
@@ -33,20 +40,23 @@ const SuggestBook = () => {
           Details
         </Button>
       </div>
-      <div className="flex flex-row items-center relative">
-        <BookItem
-          index={0}
-          url="https://covers.openlibrary.org/b/id/10192298-M.jpg"
+      {isFetched ? (
+        <div className="flex flex-row items-center relative">
+          {data.map((book_item, index) => (
+            <BookItem
+              key={`${book_item.book_id}`}
+              index={index}
+              url={book_item.img_url}
+            />
+          ))}
+        </div>
+      ) : (
+        <CircularProgress
+          color="primary"
+          size={60}
+          sx={{ color: "primary.main" }}
         />
-        <BookItem
-          index={1}
-          url="https://covers.openlibrary.org/b/id/9465869-M.jpg"
-        />
-        <BookItem
-          index={2}
-          url="https://covers.openlibrary.org/b/id/11291394-M.jpg"
-        />
-      </div>
+      )}
     </div>
   );
 };
