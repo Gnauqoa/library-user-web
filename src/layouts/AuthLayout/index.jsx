@@ -26,7 +26,7 @@ const AuthLayout = () => {
         className="w-full h-full absolute z-10"
         src={AuthBackground}
       />
-      <div className="w-full h-full  z-20">
+      <div className="flex flex-col w-full h-full z-20">
         <Outlet />
       </div>
       <div className="flex flex-row absolute bottom-10 left-10 z-20 gap-8">
