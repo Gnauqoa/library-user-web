@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NormalLayout from "layouts/NormalLayout";
 import HomePage from "pages/Home";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import AuthLayout from "layouts/AuthLayout";
 
 const queryClient = new QueryClient();
 function App() {
@@ -15,7 +16,8 @@ function App() {
           <Routes>
             <Route path="" element={<NormalLayout />}>
               <Route index element={<HomePage />} />
-            </Route>
+            </Route>{" "}
+            <Route path="auth" element={<AuthLayout />}></Route>
           </Routes>
         </BrowserRouter>
       </ThemeProvider>
