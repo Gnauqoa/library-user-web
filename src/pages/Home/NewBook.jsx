@@ -1,13 +1,13 @@
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { getBookSuggest } from "services/home";
+import { getNewBook } from "services/home";
 
-const SuggestBook = () => {
+const NewBook = () => {
   const { data, isFetched } = useQuery({
-    queryKey: ["/v1/book/hotBook"],
+    queryKey: ["newBook"],
     initialData: [],
-    queryFn: getBookSuggest,
+    queryFn: getNewBook,
   });
   return (
     <div className="flex flex-row gap-[144px] bg-[#A6BBCD] py-[140px] justify-center">
@@ -42,7 +42,7 @@ const SuggestBook = () => {
       </div>
       {isFetched ? (
         <div className="flex flex-row items-center relative">
-          {data.map((book_item, index) => (
+          {data.items.map((book_item, index) => (
             <BookItem
               key={`${book_item.book_id}`}
               index={index}
@@ -85,4 +85,4 @@ const BookItem = ({ index, url, name, book_id }) => {
     </Box>
   );
 };
-export default SuggestBook;
+export default NewBook;
