@@ -1,11 +1,33 @@
 import { Box, Button, Typography } from "@mui/material";
 import MyInput from "components/MyInput";
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as IconUser } from "assets/icon/icon_user.svg";
 import { ReactComponent as IconLock } from "assets/icon/icon_lock.svg";
 import MyCheckBox from "components/MyCheckBox";
+import getErrorMessage from "services/validate";
 
 const UserLogin = () => {
+  const [formValue, setFormValue] = useState({ email: "", password: "" });
+  const [errorMessage, setErrorMessage] = useState({ email: "", password: "" });
+  const handleChange = (e) => {
+    const { name, value } = e.currentTarget;
+    setFormValue({
+      ...formValue,
+      [name]: value,
+    });
+    if (isError(name))
+      setErrorMessage({
+        ...errorMessage,
+        [name]: getErrorMessage(name, value),
+      });
+  };
+  const handleComplete = (e) => {
+    const { name, value } = e.currentTarget;
+    setErrorMessage({ ...errorMessage, [name]: getErrorMessage(name, value) });
+  };
+  const isError = (name) => {
+    return errorMessage[name].length;
+  };
   return (
     <div className="flex flex-col w-full h-full items-center justify-center">
       <Box
@@ -36,13 +58,24 @@ const UserLogin = () => {
           Sign in
         </Typography>
         <MyInput
+          onChange={handleChange}
+          onBlur={handleComplete}
+          value={formValue.email}
           startIcon={IconUser}
+          error_message={errorMessage.email ? "Email is not valid" : ""}
           label="Email"
           name="email"
-     
           placeholder="lbr123@gmail.com"
         />
         <MyInput
+          onBlur={handleComplete}
+          value={formValue.password}
+          error_message={
+            errorMessage.password
+              ? "Password length must be longer than 8, have 1 uppercase, 1 lowercase and 1 number"
+              : ""
+          }
+          onChange={handleChange}
           type="password"
           startIcon={IconLock}
           label="Password"

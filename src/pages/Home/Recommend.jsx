@@ -8,7 +8,7 @@ import { getRecommend } from "services/home";
 const RecommendBook = () => {
   const { data, isFetched } = useQuery({
     queryKey: ["recommendBook"],
-    initialData: [],
+    initialData: { items: [] },
     queryFn: getRecommend,
   });
   return (

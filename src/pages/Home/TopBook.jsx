@@ -8,7 +8,7 @@ import { getTopBook } from "services/home";
 const TopBook = () => {
   const { data, isFetched } = useQuery({
     queryKey: ["hotBook"],
-    initialData: [],
+    initialData: { items: [] },
     queryFn: getTopBook,
   });
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import { IconButton, SvgIcon, Typography } from "@mui/material";
 import { ReactComponent as IconNotify } from "assets/icon/icon_notification.svg";
+import { Link } from "react-router-dom";
 
 const MenuAuth = () => {
   return (
@@ -10,10 +11,12 @@ const MenuAuth = () => {
       </IconButton>
       <Typography sx={{ fontSize: 16, fontWeight: 600, color: "#fff" }}>
         Sign up
-      </Typography>
-      <Typography sx={{ fontSize: 16, fontWeight: 600, color: "#fff" }}>
-        Sign in
-      </Typography>
+      </Typography>{" "}
+      <Link to="auth/login">
+        <Typography sx={{ fontSize: 16, fontWeight: 600, color: "#fff" }}>
+          Sign in
+        </Typography>
+      </Link>
     </div>
   );
 };
