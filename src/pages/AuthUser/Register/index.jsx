@@ -11,6 +11,7 @@ const UserRegister = () => {
     birth: null,
     first_name: "",
     last_name: "",
+    card_type: "",
   });
   const [step, setStep] = useState(1);
   return (
@@ -62,7 +63,11 @@ const UserRegister = () => {
               setStep={setStep}
             />
           ) : step === 2 ? (
-            <Step2 />
+            <Step2
+              formValue={formValue}
+              setFormValue={setFormValue}
+              setStep={setStep}
+            />
           ) : (
             <></>
           )}

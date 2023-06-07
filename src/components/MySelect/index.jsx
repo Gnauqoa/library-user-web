@@ -8,18 +8,18 @@ import {
 import React from "react";
 import { ReactComponent as IconArrowDown } from "assets/icon/icon_arrow_down.svg";
 
+import { useToggle } from "@uidotdev/usehooks";
+
 const SelectAtom = ({
   label,
   labelIcon,
   value = "",
-  setValue,
+  onChange,
   optionList = [],
   placeholder,
   ...props
 }) => {
-  const handleChange = (event) => {
-    setValue(event);
-  };
+  const [open, toggle] = useToggle();
   return (
     <FormControl className="flex flex-col w-full gap-2">
       <div className="flex flex-row gap-2">
@@ -36,7 +36,15 @@ const SelectAtom = ({
       </div>
       <div className="flex flex-col ">
         <Select
-          IconComponent={IconArrowDown}
+          onOpen={toggle}
+          onClose={toggle}
+          IconComponent={(props) => (
+            <SvgIcon
+              {...props}
+              inheritViewBox={true}
+              component={IconArrowDown}
+            />
+          )}
           defaultValue={value}
           {...props}
           value={value}
@@ -59,18 +67,19 @@ const SelectAtom = ({
                 borderColor: "#DEDDE1",
                 borderRadius: "12px",
                 padding: "12px 15px",
+                transition: "all 0.2s ease",
               },
               "&:hover fieldset": {
                 borderColor: "#DEDDE1",
-                boxShadow: "0px 0px 2px 2px #FFF1F8",
+                boxShadow: "0px 0px 5px 5px #C3E8FF",
               },
               "&.Mui-focused fieldset": {
                 borderColor: "primary.main",
-                boxShadow: " 0px 0px 2px 2px #F3C2DA",
+                boxShadow: "0px 0px 5px 5px #C3E8FF",
               },
             },
           }}
-          onChange={handleChange}
+          onChange={onChange}
           inputProps={{
             "aria-label": "Without label",
           }}

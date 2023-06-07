@@ -1,4 +1,4 @@
-import { Box, Button, SvgIcon, Typography } from "@mui/material";
+import { Button, SvgIcon, Typography } from "@mui/material";
 import MyInput from "components/MyInput";
 import React, { useState } from "react";
 import getErrorMessage from "services/validate";
@@ -9,7 +9,7 @@ import { DatePicker } from "@mui/x-date-pickers";
 import { styled } from "@mui/material";
 
 import { Link } from "react-router-dom";
-
+import dayjs from "dayjs";
 const DateDisplay = styled(DatePicker)(({ theme }) => ({
   ".MuiInputBase-root": {
     borderRadius: "12px",
@@ -52,13 +52,12 @@ const Step1 = ({ formValue, setFormValue, setStep }) => {
   const isDisable = () => {
     return (
       errorMessage.email ||
-      errorMessage.birth ||
+      !dayjs(formValue.birth).isValid() ||
       errorMessage.first_name ||
       errorMessage.last_name ||
       !formValue.email.length ||
       !formValue.first_name.length ||
-      !formValue.last_name.length ||
-      !formValue.birth
+      !formValue.last_name.length
     );
   };
   return (
