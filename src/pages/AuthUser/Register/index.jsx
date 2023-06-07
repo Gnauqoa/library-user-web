@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import Step1 from "./Step1";
 import { ReactComponent as ImgStar } from "assets/img/img_star.svg";
 import Step2 from "./Step2";
+import { Link } from "react-router-dom";
+import Step3 from "./Step3";
 
 const UserRegister = () => {
   const [formValue, setFormValue] = useState({
     email: "",
     password: "",
+    confirm_password: "",
     birth: null,
     first_name: "",
     last_name: "",
@@ -69,8 +72,26 @@ const UserRegister = () => {
               setStep={setStep}
             />
           ) : (
-            <></>
+            <Step3
+              formValue={formValue}
+              setFormValue={setFormValue}
+              setStep={setStep}
+            ></Step3>
           )}
+          <Typography
+            sx={{
+              fontSize: 16,
+              fontWeight: 400,
+              color: "#242D3F",
+              fontFamily: "Poppins",
+              textAlign: "center",
+            }}
+          >
+            Already a member? Go to{" "}
+            <Link to="/auth/login">
+              <span className="text-[#4D809C] font-[700]">Login.</span>
+            </Link>
+          </Typography>
         </Box>
       </div>
     </div>

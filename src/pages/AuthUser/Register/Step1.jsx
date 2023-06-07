@@ -7,9 +7,8 @@ import { ReactComponent as IconLocation } from "assets/icon/icon_location.svg";
 import { ReactComponent as IconArrowRight } from "assets/icon/icon_arrow_right.svg";
 import { DatePicker } from "@mui/x-date-pickers";
 import { styled } from "@mui/material";
-
-import { Link } from "react-router-dom";
 import dayjs from "dayjs";
+
 const DateDisplay = styled(DatePicker)(({ theme }) => ({
   ".MuiInputBase-root": {
     borderRadius: "12px",
@@ -170,20 +169,7 @@ const Step1 = ({ formValue, setFormValue, setStep }) => {
           component={IconArrowRight}
         />
       </Button>
-      <Typography
-        sx={{
-          fontSize: 16,
-          fontWeight: 400,
-          color: "#242D3F",
-          fontFamily: "Poppins",
-          textAlign: "center",
-        }}
-      >
-        Already a member? Go to{" "}
-        <Link to="/auth/login">
-          <span className="text-[#4D809C] font-[700]">Login.</span>
-        </Link>
-      </Typography>
+      
     </div>
   );
 };
