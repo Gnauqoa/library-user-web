@@ -63,7 +63,7 @@ const theme = createTheme({
             },
             ":focus": {
               background: "#242D3F",
-              borderColor: "#fff2db",
+              borderColor: "#2E4958",
             },
             ":disabled": {
               color: "#ffffff",

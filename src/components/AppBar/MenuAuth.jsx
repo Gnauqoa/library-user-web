@@ -9,9 +9,11 @@ const MenuAuth = () => {
       <IconButton sx={{ width: 30, height: 30, color: "#fff" }}>
         <SvgIcon inheritViewBox={true} component={IconNotify} />
       </IconButton>
-      <Typography sx={{ fontSize: 16, fontWeight: 600, color: "#fff" }}>
-        Sign up
-      </Typography>{" "}
+      <Link to="auth/register">
+        <Typography sx={{ fontSize: 16, fontWeight: 600, color: "#fff" }}>
+          Sign up
+        </Typography>
+      </Link>
       <Link to="auth/login">
         <Typography sx={{ fontSize: 16, fontWeight: 600, color: "#fff" }}>
           Sign in

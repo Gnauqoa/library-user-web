@@ -5,10 +5,19 @@ import { ReactComponent as IconUser } from "assets/icon/icon_user.svg";
 import { ReactComponent as IconLock } from "assets/icon/icon_lock.svg";
 import MyCheckBox from "components/MyCheckBox";
 import getErrorMessage from "services/validate";
+import { Link } from "react-router-dom";
 
 const UserLogin = () => {
   const [formValue, setFormValue] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState({ email: "", password: "" });
+  const isDisable = () => {
+    return (
+      errorMessage.email ||
+      errorMessage.password ||
+      !formValue.email.length ||
+      !formValue.password.length
+    );
+  };
   const handleChange = (e) => {
     const { name, value } = e.currentTarget;
     setFormValue({
@@ -87,6 +96,7 @@ const UserLogin = () => {
           <Button
             sx={{ borderRadius: 12, width: "100%", marginTop: "36px" }}
             variant="primary filled"
+            disabled={isDisable()}
           >
             Sign in
           </Button>
@@ -99,7 +109,9 @@ const UserLogin = () => {
             }}
           >
             Can't sign in?{" "}
-            <span className="text-primary-main font-[700]">Create account</span>
+            <Link to="/auth/register">
+              <span className="text-[#4D809C] font-[700]">Create account</span>
+            </Link>
           </Typography>
         </div>
       </Box>

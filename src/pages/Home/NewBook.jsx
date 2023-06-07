@@ -6,7 +6,7 @@ import { getNewBook } from "services/home";
 const NewBook = () => {
   const { data, isFetched } = useQuery({
     queryKey: ["newBook"],
-    initialData: [],
+    initialData: { items: [] },
     queryFn: getNewBook,
   });
   return (

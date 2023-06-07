@@ -11,7 +11,7 @@ const getErrorMessage = (name, value) => {
       minSymbols: 0,
       returnScore: false,
     });
-
+    console.log(name, value);
   if (name === "first_name" || name === "last_name") return !value.length;
   return false;
 };

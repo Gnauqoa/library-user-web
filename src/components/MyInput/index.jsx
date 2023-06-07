@@ -25,7 +25,14 @@ const MyInput = ({
   return (
     <div className="flex flex-col gap-2 w-full">
       {label ? (
-        <Typography sx={{ fontSize: 14, fontWeight: 500, color: "#121115" }}>
+        <Typography
+          sx={{
+            fontSize: 14,
+            fontWeight: 500,
+            color: "#121115",
+            fontFamily: "Poppins",
+          }}
+        >
           {label}
         </Typography>
       ) : (
