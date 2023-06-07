@@ -11,14 +11,15 @@ const useAPI = ({ queryFn, getNow }) => {
   const [loading, setLoading] = useState(false);
   const loginStatus = useSelector((state) => state.loginStatus);
   const dispatch = useDispatch();
-  const getData = () => {
+  const getData = async () => {
     setLoading(true);
     return queryFn()
       .then((res) => {
         setResponse(res);
+        return Promise.resolve(res);
       })
       .catch((err) => {
-        if (err.response.status === 401) {
+        if (err.response.status === 401 && loginStatus.isLogin) {
           const { method, url, data, params } = err.config;
           return getAccessTokenFromRefreshToken()
             .then((res) => {
@@ -29,14 +30,18 @@ const useAPI = ({ queryFn, getNow }) => {
                   return Promise.resolve(res);
                 });
             })
-            .catch((err) => {
+            .catch((err2) => {
               dispatch(setLoginStatus({ ...loginStatus, isChecking: true }));
-              // return Promise.reject(err);
+              setResponse(null);
+              toast.error(err.message);
+              setError(err);
+              return Promise.reject(err);
             });
         }
         setResponse(null);
         toast.error(err.message);
         setError(err);
+        return Promise.reject(err);
       })
       .finally(() => {
         setLoading(false);

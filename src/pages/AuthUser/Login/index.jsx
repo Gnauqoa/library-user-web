@@ -8,13 +8,23 @@ import getErrorMessage from "services/validate";
 import { Link } from "react-router-dom";
 import { login } from "services/userAuth";
 import useAPI from "hooks/useApi";
+import { storeUser } from "reducers/userReducer";
+import { setLoginStatus } from "reducers/loginStatusReducer";
+import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
 
 const UserLogin = () => {
   const [formValue, setFormValue] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState({ email: "", password: "" });
   const loginRequest = useAPI({ queryFn: () => login(formValue) });
-  const handleLogin = () => {
-    loginRequest.getData();
+  const dispatch = useDispatch();
+  const handleLogin = async () => {
+    try {
+      const res = await loginRequest.getData();
+      dispatch(storeUser(res.data.data));
+      dispatch(setLoginStatus({ isChecking: false, isLogin: true }));
+      toast.success("Login success");
+    } catch (err) {}
   };
   const isDisable = () => {
     return (

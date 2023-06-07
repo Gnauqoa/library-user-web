@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 
 const AUTHENTICATION_URLS = {
   LOGIN: "/v1/user/login",
-  LOGOUT: "/v1/user/logout",
+  LOGOUT: "/v1/user/current/logout",
   LOGOUT_ALL: "/v1/user/logout_all",
   REFRESH_TOKEN: "/v1/user/refresh_token",
   REGISTER: "/v1/user/",
@@ -38,6 +38,12 @@ export const getAccessTokenFromRefreshToken = () => {
       } else clearTokens();
       return Promise.resolve(response);
     });
+};
+export const logout = () => {
+  return axiosForLibraryAPI.request({
+    method: "delete",
+    url: AUTHENTICATION_URLS.LOGOUT,
+  });
 };
 export const login = (payload) => {
   return axiosForLibraryAPI

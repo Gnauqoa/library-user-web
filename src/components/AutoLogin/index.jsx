@@ -22,26 +22,20 @@ const AutoLogin = () => {
     let { isChecking, isLogin } = loginStatus;
     if (!isChecking) return;
     isChecking = false;
-    console.log("auto login");
-    console.log(getAccessToken(), getRefreshToken());
     if (validateToken(getRefreshToken())) {
       if (!validateToken(getAccessToken())) {
-        console.log("get new access_token");
         getAccessTokenFromRefreshToken()
           .then((res) => {
-            console.log("new token", getAccessToken());
             isLogin = true;
             getCurrentUser().then((res) => dispatch(storeUser(res.data.data)));
           })
           .catch((err) => {
-            console.log("clear");
             isLogin = false;
             clearTokens();
           })
           .finally(() => dispatch(setLoginStatus({ isLogin, isChecking })));
         return;
       }
-      console.log("use old access_token");
       axiosForLibraryAPI.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${getAccessToken()}`;
@@ -59,7 +53,6 @@ const AutoLogin = () => {
         .finally(() => dispatch(setLoginStatus({ isLogin, isChecking })));
       return;
     }
-    console.log("login failed");
     clearTokens();
     dispatch(setLoginStatus({ isLogin, isChecking }));
   };
