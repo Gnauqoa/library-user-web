@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import AuthBackground from "assets/img/auth_background.png";
 import { Outlet } from "react-router";
-import { SvgIcon, Typography } from "@mui/material";
+import { CircularProgress, SvgIcon, Typography } from "@mui/material";
 import { ReactComponent as Logo } from "assets/img/logo.svg";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const AuthLayout = () => {
+  const loginStatus = useSelector((state) => state.loginStatus);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (loginStatus.isLogin) navigate("../");
+  }, [loginStatus]);
+  if (loginStatus.isChecking)
+    return (
+      <div className="h-screen w-full flex flex-col items-center justify-center">
+        <CircularProgress />
+      </div>
+    );
+  if (loginStatus.isLogin) return <></>;
   return (
     <div className="flex flex-col h-screen w-full relative">
       <SvgIcon

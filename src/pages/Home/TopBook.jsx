@@ -1,16 +1,12 @@
 import { CircularProgress, Typography } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 import BookCard from "components/BookCard";
 import HorizontalScroll from "components/HorizontalScroll";
+import useAPI from "hooks/useApi";
 import React from "react";
 import { getTopBook } from "services/home";
 
 const TopBook = () => {
-  const { data, isFetched } = useQuery({
-    queryKey: ["hotBook"],
-    initialData: { items: [] },
-    queryFn: getTopBook,
-  });
+  const topBookRequest = useAPI({ queryFn: getTopBook, getNow: true });
   return (
     <div className="flex flex-col ">
       <Typography
@@ -22,14 +18,14 @@ const TopBook = () => {
       >
         Top borrowed:
       </Typography>
-      {isFetched ? (
+      {topBookRequest.loading ? (
+        <CircularProgress />
+      ) : (
         <HorizontalScroll>
-          {data.items.map((data) => (
+          {topBookRequest?.response?.items.map((data) => (
             <BookCard key={data.id} count={data.count} {...data.book} />
           ))}
         </HorizontalScroll>
-      ) : (
-        <CircularProgress />
       )}
     </div>
   );

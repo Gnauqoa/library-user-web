@@ -1,14 +1,10 @@
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
+import useAPI from "hooks/useApi";
 import React from "react";
 import { getNewBook } from "services/home";
 
 const NewBook = () => {
-  const { data, isFetched } = useQuery({
-    queryKey: ["newBook"],
-    initialData: { items: [] },
-    queryFn: getNewBook,
-  });
+  const newBookRequest = useAPI({ queryFn: getNewBook, getNow: true });
   return (
     <div className="flex flex-row gap-[144px] bg-[#A6BBCD] py-[140px] justify-center">
       <div className="flex flex-col gap-6">
@@ -40,9 +36,15 @@ const NewBook = () => {
           Details
         </Button>
       </div>
-      {isFetched ? (
+      {newBookRequest.loading ? (
+        <CircularProgress
+          color="primary"
+          size={60}
+          sx={{ color: "primary.main" }}
+        />
+      ) : (
         <div className="flex flex-row items-center relative">
-          {data.items.map((book_item, index) => (
+          {newBookRequest?.response?.items.map((book_item, index) => (
             <BookItem
               key={`${book_item.book.book_id}`}
               index={index}
@@ -50,12 +52,6 @@ const NewBook = () => {
             />
           ))}
         </div>
-      ) : (
-        <CircularProgress
-          color="primary"
-          size={60}
-          sx={{ color: "primary.main" }}
-        />
       )}
     </div>
   );

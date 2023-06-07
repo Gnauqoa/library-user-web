@@ -12,7 +12,7 @@ import useAPI from "hooks/useApi";
 const UserLogin = () => {
   const [formValue, setFormValue] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState({ email: "", password: "" });
-  const loginRequest = useAPI({ queryFn: login });
+  const loginRequest = useAPI({ queryFn: () => login(formValue) });
   const handleLogin = () => {
     loginRequest.getData();
   };
