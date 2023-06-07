@@ -11,7 +11,7 @@ const useAPI = ({ queryFn, getNow }) => {
   const [loading, setLoading] = useState(false);
   const loginStatus = useSelector((state) => state.loginStatus);
   const dispatch = useDispatch();
-  const getData = async () => {
+  const run = async () => {
     setLoading(true);
     return queryFn()
       .then((res) => {
@@ -19,7 +19,7 @@ const useAPI = ({ queryFn, getNow }) => {
         return Promise.resolve(res);
       })
       .catch((err) => {
-        if (err.response.status === 401 && loginStatus.isLogin) {
+        if (err?.response?.status === 401 && loginStatus.isLogin) {
           const { method, url, data, params } = err.config;
           return getAccessTokenFromRefreshToken()
             .then((res) => {
@@ -47,10 +47,15 @@ const useAPI = ({ queryFn, getNow }) => {
         setLoading(false);
       });
   };
+  const runNow = async () => {
+    try {
+      if (getNow) run();
+    } catch (err) {}
+  };
   useEffect(() => {
-    if (getNow) getData();
+    if (getNow) runNow();
   }, []);
-  return { response, getData, loading, error };
+  return { response, run, loading, error };
 };
 
 export default useAPI;
