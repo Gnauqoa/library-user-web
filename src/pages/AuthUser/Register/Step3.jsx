@@ -5,7 +5,7 @@ import getErrorMessage from "services/validate";
 import { ReactComponent as IconLock } from "assets/icon/icon_lock.svg";
 import { ReactComponent as IconArrowRight } from "assets/icon/icon_arrow_right.svg";
 
-const Step3 = ({ formValue, setFormValue, setStep }) => {
+const Step3 = ({ formValue, setFormValue }) => {
   const [errorMessage, setErrorMessage] = useState({
     confirm_password: false,
     password: false,
@@ -89,7 +89,6 @@ const Step3 = ({ formValue, setFormValue, setStep }) => {
         }}
         disabled={isDisable()}
         variant="primary filled"
-        onClick={() => setStep(2)}
       >
         Create an account
         <SvgIcon

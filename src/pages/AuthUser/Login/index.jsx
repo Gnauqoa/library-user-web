@@ -6,10 +6,16 @@ import { ReactComponent as IconLock } from "assets/icon/icon_lock.svg";
 import MyCheckBox from "components/MyCheckBox";
 import getErrorMessage from "services/validate";
 import { Link } from "react-router-dom";
+import { login } from "services/userAuth";
+import useAPI from "hooks/useApi";
 
 const UserLogin = () => {
   const [formValue, setFormValue] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState({ email: "", password: "" });
+  const loginRequest = useAPI({ queryFn: login });
+  const handleLogin = () => {
+    loginRequest.getData();
+  };
   const isDisable = () => {
     return (
       errorMessage.email ||
@@ -94,6 +100,7 @@ const UserLogin = () => {
         <MyCheckBox label="Stay sign in" />
         <div className="flex flex-col gap-8">
           <Button
+            onClick={handleLogin}
             sx={{ borderRadius: 12, width: "100%", marginTop: "36px" }}
             variant="primary filled"
             disabled={isDisable()}
