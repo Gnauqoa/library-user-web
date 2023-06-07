@@ -1,16 +1,12 @@
 import { CircularProgress, Typography } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 import BookCard from "components/BookCard";
 import HorizontalScroll from "components/HorizontalScroll";
+import useAPI from "hooks/useApi";
 import React from "react";
 import { getRecommend } from "services/home";
 
 const RecommendBook = () => {
-  const { data, isFetched } = useQuery({
-    queryKey: ["recommendBook"],
-    initialData: [],
-    queryFn: getRecommend,
-  });
+  const recommendBookRequest = useAPI({ queryFn: getRecommend, getNow: true });
   return (
     <div className="flex flex-col ">
       <Typography
@@ -22,14 +18,14 @@ const RecommendBook = () => {
       >
         Recommend:
       </Typography>
-      {isFetched ? (
+      {recommendBookRequest.loading ? (
+        <CircularProgress />
+      ) : (
         <HorizontalScroll>
-          {data.items.map((data) => (
+          {recommendBookRequest?.response?.items.map((data) => (
             <BookCard key={data.id} count={data.count} {...data.book} />
           ))}
         </HorizontalScroll>
-      ) : (
-        <CircularProgress />
       )}
     </div>
   );
