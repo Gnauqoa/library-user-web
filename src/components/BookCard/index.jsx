@@ -1,6 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import styled from "@mui/system/styled";
+import { useNavigate } from "react-router-dom";
 const CustomButton = styled(Button)(({ variant }) => ({
   paddingX: 12,
   paddingLeft: 20,
@@ -8,7 +9,8 @@ const CustomButton = styled(Button)(({ variant }) => ({
   borderRadius: 8,
 }));
 
-const BookCard = ({ img_url, name, count }) => {
+const BookCard = ({ id, img_url, name, count }) => {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{ ":hover": { boxShadow: "0px 0px 14px 6px rgba(0,0,0,0.1)" } }}
@@ -38,7 +40,12 @@ const BookCard = ({ img_url, name, count }) => {
         >
           Left over: <span className="pl-[20px] text-[#6C6C6C]">{count}</span>
         </Typography>
-        <CustomButton variant="primary filled">Details</CustomButton>
+        <CustomButton
+          onClick={() => navigate(`/book/${id}`)}
+          variant="primary filled"
+        >
+          Details
+        </CustomButton>
       </div>
     </Box>
   );

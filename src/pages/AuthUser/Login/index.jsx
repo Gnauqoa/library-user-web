@@ -20,7 +20,7 @@ const UserLogin = () => {
   const dispatch = useDispatch();
   const handleLogin = async () => {
     try {
-      const res = await loginRequest.getData();
+      const res = await loginRequest.run();
       dispatch(storeUser(res.data.data));
       dispatch(setLoginStatus({ isChecking: false, isLogin: true }));
       toast.success("Login success");

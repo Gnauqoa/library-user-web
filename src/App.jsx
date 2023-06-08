@@ -10,6 +10,7 @@ import UserRegister from "pages/AuthUser/Register";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import AutoLogin from "components/AutoLogin";
+import Book from "pages/Book";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Routes>
             <Route path="" element={<NormalLayout />}>
               <Route index element={<HomePage />} />
+              <Route path="book/:current_book_id" element={<Book />} />
             </Route>
             <Route path="auth" element={<AuthLayout />}>
               <Route index path="login" element={<UserLogin />} />{" "}

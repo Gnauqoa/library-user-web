@@ -12,7 +12,7 @@ const UserMenu = () => {
   const logoutRequest = useAPI({ queryFn: logout });
   const dispatch = useDispatch();
   const handleLogout = () => {
-    logoutRequest.getData().then((res) => {
+    logoutRequest.run().then((res) => {
       toast.success("Logout success");
       dispatch(setLoginStatus({ isLogin: false, isChecking: false }));
     });
