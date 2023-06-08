@@ -11,6 +11,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import AutoLogin from "components/AutoLogin";
 import Book from "pages/Book";
+import PrivateRouter from "components/PrivateRouter";
+import UserProfile from "pages/UserProfile";
 
 function App() {
   return (
@@ -21,7 +23,10 @@ function App() {
           <Routes>
             <Route path="" element={<NormalLayout />}>
               <Route index element={<HomePage />} />
-              <Route path="book/:current_book_id" element={<Book />} />
+              <Route path="book/:current_book_id" element={<Book />} />{" "}
+              <Route path="user" element={<PrivateRouter />}>
+                <Route index element={<UserProfile />} />
+              </Route>
             </Route>
             <Route path="auth" element={<AuthLayout />}>
               <Route index path="login" element={<UserLogin />} />{" "}
