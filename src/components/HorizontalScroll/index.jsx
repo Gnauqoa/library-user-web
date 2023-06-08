@@ -34,6 +34,7 @@ const HorizontalScroll = ({ children }) => {
             height: 38,
             backdropFilter: "blur(50px)",
             color: "#0D0842",
+            boxShadow: "6px 0px 17px 11px rgba(0,0,0,0.1)",
           }}
           disabled={scrollBarLoc === 0}
         >
@@ -55,6 +56,7 @@ const HorizontalScroll = ({ children }) => {
             height: 38,
             backdropFilter: "blur(50px)",
             color: "#0D0842",
+            boxShadow: "-6px 0px 17px 11px rgba(0,0,0,0.1)",
           }}
           disabled={
             scrollBarLoc + 1 >=
