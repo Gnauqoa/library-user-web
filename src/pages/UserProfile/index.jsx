@@ -6,6 +6,7 @@ import React from "react";
 import CardInfo from "./CardInfo";
 import UserInfo from "./UserInfo";
 import Activity from "./Activity";
+import BorrowList from "./BorrowList";
 
 const UserProfile = () => {
   return (
@@ -21,8 +22,8 @@ const UserProfile = () => {
           </div>
           <UserInfo />
         </div>
-        <div className="flex flex-row w-full">
-          <div className="flex flex-col w-full"></div>
+        <div className="flex flex-row w-full gap-8">
+          <BorrowList />
           <Activity />
         </div>
       </div>
