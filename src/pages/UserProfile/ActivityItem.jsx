@@ -80,9 +80,9 @@ const ShowType = ({ type, borrow_days, fine, max_borrow_days, fine_pay }) => {
     if (fine) {
       sub_text = `- ${fine}`;
       color = "#FF7171";
-      text = "Return late";
+      text = "Fining";
     } else {
-      color = "#0263FF";
+      color = "#AFE3EE";
       text = "Return";
     }
   } else if (type === "borrowBook") {
@@ -115,7 +115,6 @@ const ShowType = ({ type, borrow_days, fine, max_borrow_days, fine_pay }) => {
       ) : (
         <></>
       )}
-
       <Box
         sx={{
           display: "flex",
@@ -146,7 +145,7 @@ const ShowType = ({ type, borrow_days, fine, max_borrow_days, fine_pay }) => {
   );
 };
 
-const ShowDate = ({ type, borrow_date, return_date, pay_date }) => {
+const ShowDate = ({ type, borrow_date, return_date }) => {
   return (
     <Typography
       sx={{

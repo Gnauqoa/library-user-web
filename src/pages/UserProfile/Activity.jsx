@@ -22,8 +22,8 @@ function Activity() {
       })
       .then((res) => {
         setActivityList((prev) => ({
-          ...res.data,
-          items: [...prev.items, ...res.data.items],
+          ...res?.data,
+          items: [...prev?.items, ...res?.data?.items],
         }));
       });
   };

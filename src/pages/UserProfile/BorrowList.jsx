@@ -1,7 +1,6 @@
-import { Button, CircularProgress, Typography } from "@mui/material";
-import { useCounter } from "@uidotdev/usehooks";
+import { Typography } from "@mui/material";
 import useAPI from "hooks/useApi";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { getBorrowingList } from "services/userAuth";
 import ActivityItem from "./ActivityItem";
 
