@@ -5,15 +5,15 @@ import { getAccessTokenFromRefreshToken } from "services/userAuth";
 import { axiosForLibraryAPI } from "services/axios";
 import { toast } from "react-toastify";
 
-const useAPI = ({ queryFn, getNow }) => {
+const useAPI = ({ queryFn, getNow, fnParam }) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const loginStatus = useSelector((state) => state.loginStatus);
   const dispatch = useDispatch();
-  const run = async () => {
+  function run(param) {
     setLoading(true);
-    return queryFn()
+    return queryFn(param)
       .then((res) => {
         setResponse(res);
         return Promise.resolve(res);
@@ -46,10 +46,10 @@ const useAPI = ({ queryFn, getNow }) => {
       .finally(() => {
         setLoading(false);
       });
-  };
+  }
   const runNow = async () => {
     try {
-      if (getNow) run();
+      if (getNow) run(fnParam);
     } catch (err) {}
   };
   useEffect(() => {

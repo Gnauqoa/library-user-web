@@ -22,6 +22,7 @@ const AutoLogin = () => {
     let { isChecking, isLogin } = loginStatus;
     if (!isChecking) return;
     isChecking = false;
+
     if (validateToken(getRefreshToken())) {
       if (!validateToken(getAccessToken())) {
         getAccessTokenFromRefreshToken()
@@ -36,6 +37,7 @@ const AutoLogin = () => {
           .finally(() => dispatch(setLoginStatus({ isLogin, isChecking })));
         return;
       }
+
       axiosForLibraryAPI.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${getAccessToken()}`;
