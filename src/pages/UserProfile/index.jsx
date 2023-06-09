@@ -3,9 +3,9 @@ import { ReactComponent as IconActiveTick } from "assets/icon/icon_check.svg";
 
 import DefaultAvatar from "assets/img/default_avatar.svg";
 import React from "react";
-import { useSelector } from "react-redux";
 import CardInfo from "./CardInfo";
 import UserInfo from "./UserInfo";
+import Activity from "./Activity";
 
 const UserProfile = () => {
   return (
@@ -20,6 +20,10 @@ const UserProfile = () => {
             <CardInfo />
           </div>
           <UserInfo />
+        </div>
+        <div className="flex flex-row w-full">
+          <div className="flex flex-col w-full"></div>
+          <Activity />
         </div>
       </div>
     </Container>

@@ -150,7 +150,14 @@ const Suggest = () => {
   return (
     <div className="w-full bg-[#fff] py-[70px]">
       <Container>
-        <Typography sx={{ color: "#2D5A73", fontSize: 24, fontWeight: 500 }}>
+        <Typography
+          sx={{
+            color: "#2D5A73",
+            fontSize: 24,
+            fontWeight: 500,
+            fontFamily: "Poppins",
+          }}
+        >
           You may also like:
         </Typography>
         <HorizontalScroll>

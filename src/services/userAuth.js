@@ -9,6 +9,16 @@ const AUTHENTICATION_URLS = {
   LOGOUT_ALL: "/v1/user/logout_all",
   REFRESH_TOKEN: "/v1/user/refresh_token",
   REGISTER: "/v1/user/",
+  ACTIVITY: "/v1/user/current/activity",
+};
+export const getActivity = (per_page, page) => {
+  return axiosForLibraryAPI
+    .request({
+      url: AUTHENTICATION_URLS.ACTIVITY,
+      method: "get",
+      params: { per_page, page },
+    })
+    .then((res) => res.data);
 };
 export const validateToken = (token) => {
   if (token === null || token === undefined || token === "") {

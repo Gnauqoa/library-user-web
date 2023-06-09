@@ -53,10 +53,8 @@ const CardInfo = () => {
           "DD/MM/YYYY"
         )}`}
       />
-      <div className="flex flex-row items-center gap-[80px]">
-        <InfoItem icon={IconBook} info={`Borrowing book: 3`} />
-        <InfoItem icon={IconBook2} info={`Borrowed book: 3`} />
-      </div>
+      <InfoItem icon={IconBook} info={`Borrowing book: 3`} />
+      <InfoItem icon={IconBook2} info={`Borrowed book: 3`} />
       <InfoItem
         icon={IconTimer}
         info={`Account duration: ${dayjs(currentUser.expire_at).format(

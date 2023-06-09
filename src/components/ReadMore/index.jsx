@@ -1,7 +1,7 @@
 import { useToggle } from "@uidotdev/usehooks";
 import React from "react";
 
-const ReadMore = ({ maxlength = 200, text, children, ...props }) => {
+const ReadMore = ({ maxlength = 200, text, ...props }) => {
   const [on, toggle] = useToggle(false);
   if (text)
     return (

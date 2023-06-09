@@ -20,7 +20,6 @@ const AutoLogin = () => {
   const dispatch = useDispatch();
   const login = () => {
     let { isChecking, isLogin } = loginStatus;
-    console.log(isChecking);
     if (!isChecking) return;
     isChecking = false;
 
