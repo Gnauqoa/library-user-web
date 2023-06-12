@@ -30,14 +30,14 @@ const ActivityItem = ({
         <>
           <div className="flex flex-col w-[110px] h-[150px]">
             <img
-              src={book.img_url}
+              src={book.details_book.img_url}
               alt=""
               className="h-full w-auto object-cover rounded-[12px]"
             />
           </div>
           <div className="flex flex-col gap-4 pl-[60px]">
             <Typography sx={{ fontSize: 28, fontWeight: 500, color: "#000" }}>
-              {book.name}
+              {book.details_book.name}
             </Typography>
             <Typography
               sx={{
@@ -48,7 +48,7 @@ const ActivityItem = ({
               }}
             >
               Author:{" "}
-              <span className="font-[300]">{` ${book.authors[0].name}`}</span>
+              <span className="font-[300]">{` ${book.details_book.authors[0].name}`}</span>
             </Typography>
             <ShowDate
               type={type}

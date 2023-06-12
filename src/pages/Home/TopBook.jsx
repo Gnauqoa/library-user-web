@@ -23,7 +23,7 @@ const TopBook = () => {
       ) : (
         <HorizontalScroll>
           {topBookRequest?.response?.items.map((data) => (
-            <BookCard key={data.id} count={data.count} {...data.book} />
+            <BookCard key={data.id} count={data.count} {...data} />
           ))}
         </HorizontalScroll>
       )}
