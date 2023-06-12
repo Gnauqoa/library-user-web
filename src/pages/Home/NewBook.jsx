@@ -43,15 +43,20 @@ const NewBook = () => {
           sx={{ color: "primary.main" }}
         />
       ) : (
+        <></>
+      )}
+      {newBookRequest.isFetched ? (
         <div className="flex flex-row items-center relative">
-          {newBookRequest?.response?.items.map((book_item, index) => (
+          {newBookRequest?.response?.items?.map((book, index) => (
             <BookItem
-              key={`${book_item.book.book_id}`}
+              key={`${book.book_id}`}
               index={index}
-              url={book_item.book.img_url}
+              url={book.img_url}
             />
           ))}
         </div>
+      ) : (
+        <></>
       )}
     </div>
   );

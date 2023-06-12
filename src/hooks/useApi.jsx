@@ -10,8 +10,10 @@ const useAPI = ({ queryFn, getNow, fnParam }) => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const loginStatus = useSelector((state) => state.loginStatus);
+  const [isFetched, setIsFetched] = useState(false);
   const dispatch = useDispatch();
   function run(param) {
+    setIsFetched(false);
     setLoading(true);
     return queryFn(param)
       .then((res) => {
@@ -44,6 +46,7 @@ const useAPI = ({ queryFn, getNow, fnParam }) => {
         return Promise.reject(err);
       })
       .finally(() => {
+        setIsFetched(true);
         setLoading(false);
       });
   }
@@ -55,7 +58,7 @@ const useAPI = ({ queryFn, getNow, fnParam }) => {
   useEffect(() => {
     if (getNow) runNow();
   }, []);
-  return { response, run, loading, error };
+  return { response, run, loading, error, isFetched };
 };
 
 export default useAPI;
