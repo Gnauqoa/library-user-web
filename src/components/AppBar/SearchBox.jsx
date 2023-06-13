@@ -15,7 +15,8 @@ const SearchBox = () => {
           placeholder="Harry potter"
           className="outline-none text-[16px] w-full"
           onKeyDown={(e) => {
-            if (e.key === "Enter") navigate(`/search?book_name=${book_name}`);
+            if (e.key === "Enter")
+              navigate(`/search?name=${book_name}&page=1&per_page=15`);
           }}
         />
         <IconButton

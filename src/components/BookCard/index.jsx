@@ -9,7 +9,7 @@ const CustomButton = styled(Button)(({ variant }) => ({
   borderRadius: 8,
 }));
 
-const BookCard = ({ id, img_url, name, count }) => {
+const BookCard = ({ id, img_url, name, available_book }) => {
   const navigate = useNavigate();
   return (
     <Box
@@ -38,7 +38,7 @@ const BookCard = ({ id, img_url, name, count }) => {
             color: "#0D0842",
           }}
         >
-          Left over: <span className="pl-[20px] text-[#6C6C6C]">{count}</span>
+          Left over: <span className="pl-[20px] text-[#6C6C6C]">{available_book}</span>
         </Typography>
         <CustomButton
           onClick={() => navigate(`/book/${id}`)}

@@ -1,35 +1,56 @@
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
+import { Link } from "react-router-dom";
 
-const SearchBookCard = ({ name, authors }) => {
+const SearchBookCard = ({ id, name, authors, img_url, available_book }) => {
   return (
-    <div className="flex flex-col py-[15px] items-center gap-[15px]">
-      <div className="w-[130px] h-[250px] rounded-[4px] flex flex-col items-center">
-        <img alt="" className="h-full w-auto object-cover" />
-      </div>
-      <div className="flex flex-col gap-[15px]">
-        <Typography
-          sx={{
-            fontSize: 16,
-            fontWeight: 400,
-            color: "#000",
-            fontFamily: "Poppins",
-          }}
-        >
-          {name}
-        </Typography>
-        <Typography
-          sx={{
-            fontSize: 12,
-            fontWeight: 300,
-            color: "#000",
-            fontFamily: "Poppins",
-          }}
-        >
-          {authors[0].name}
-        </Typography>
-      </div>
-    </div>
+    <Link to={`/book/${id}`}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "16px 16px",
+          gap: "15px",
+          transition: "all 0.2s ease",
+          ":hover": {
+            boxShadow: "0px 12px 22px 14px rgba(0,0,0,0.1)",
+          },
+          borderRadius: "24px",
+          overflow: "hidden",
+          width: 200,
+        }}
+      >
+        <div className="flex flex-col justify-center items-center h-[250px] rounded-[12px]  overflow-hidden">
+          <img
+            alt=""
+            src={img_url}
+            className="h-full w-auto object-cover rounded-[12px]"
+          />
+        </div>
+        <div className="flex flex-col gap-[15px]">
+          <Typography
+            sx={{
+              fontSize: 16,
+              fontWeight: 400,
+              color: "#000",
+              fontFamily: "Poppins",
+            }}
+          >
+            {name}
+          </Typography>
+          <Typography
+            sx={{
+              fontSize: 12,
+              fontWeight: 300,
+              color: "#000",
+              fontFamily: "Poppins",
+            }}
+          >
+            {authors[0].name}
+          </Typography>
+        </div>
+      </Box>
+    </Link>
   );
 };
 

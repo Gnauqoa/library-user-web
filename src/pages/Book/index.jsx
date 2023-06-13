@@ -4,7 +4,7 @@ import HorizontalScroll from "components/HorizontalScroll";
 import ReadMore from "components/ReadMore";
 import dayjs from "dayjs";
 import useAPI from "hooks/useApi";
-import React from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getBookById } from "services/book";
 import { getNewBook } from "services/home";
@@ -13,8 +13,10 @@ const Book = () => {
   const { current_book_id } = useParams();
   const bookRequest = useAPI({
     queryFn: () => getBookById(current_book_id),
-    getNow: true,
   });
+  useEffect(() => {
+    bookRequest.run();
+  }, [current_book_id]);
   if (bookRequest.loading) return <CircularProgress />;
   return (
     <div className="flex flex-col gap-[70px] bg-[#D8E3FF33]">
@@ -134,7 +136,7 @@ const Book = () => {
             >
               Left over:{" "}
               <span className="text-[#787878]">
-                {bookRequest?.response?.count}
+                {bookRequest?.response?.available_book}
               </span>
             </Typography>
           </div>
@@ -161,8 +163,8 @@ const Suggest = () => {
           You may also like:
         </Typography>
         <HorizontalScroll>
-          {suggestRequest?.response?.items.map((data) => (
-            <BookCard key={data.id} count={data.count} {...data.book} />
+          {suggestRequest?.response?.items.map((book) => (
+            <BookCard key={book.id} count={book.available_book} {...book} />
           ))}
         </HorizontalScroll>
       </Container>

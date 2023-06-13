@@ -3,8 +3,8 @@ import { ReactComponent as IconFilter } from "assets/icon/icon_filter.svg";
 import { SvgIcon, Typography } from "@mui/material";
 const Filter = () => {
   return (
-    <div className="flex flex-col gap-[30px]">
-      <div className="flex flex-row items-center gap-3">
+    <div className="flex flex-col gap-[30px] w-full">
+      <div className="flex flex-row items-center gap-3 ">
         <SvgIcon
           component={IconFilter}
           inheritViewBox={true}
