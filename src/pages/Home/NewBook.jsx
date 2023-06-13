@@ -1,6 +1,7 @@
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import useAPI from "hooks/useApi";
 import React from "react";
+import { Link } from "react-router-dom";
 import { getNewBook } from "services/home";
 
 const NewBook = () => {
@@ -32,9 +33,9 @@ const NewBook = () => {
           to captivating memoirs, this week's new releases offer something for
           everyone
         </Typography>
-        <Button sx={{ borderRadius: "8px" }} variant="primary filled">
+        {/* <Button sx={{ borderRadius: "8px" }} variant="primary filled">
           Details
-        </Button>
+        </Button> */}
       </div>
       {newBookRequest.loading ? (
         <CircularProgress
@@ -49,9 +50,10 @@ const NewBook = () => {
         <div className="flex flex-row items-center relative">
           {newBookRequest?.response?.items?.map((book, index) => (
             <BookItem
-              key={`${book.book_id}`}
+              key={`${book.id}`}
               index={index}
               url={book.img_url}
+              id={book.id}
             />
           ))}
         </div>
@@ -61,7 +63,7 @@ const NewBook = () => {
     </div>
   );
 };
-const BookItem = ({ index, url, name, book_id }) => {
+const BookItem = ({ index, url, id }) => {
   const height = index === 2 ? 250 : index ? 300 : 350;
   return (
     <Box
@@ -82,7 +84,9 @@ const BookItem = ({ index, url, name, book_id }) => {
         },
       }}
     >
-      <img alt="" src={url} className="object-cover h-full" />
+      <Link to={`/book/${id}`}>
+        <img alt="" src={url} className="object-cover h-full" />
+      </Link>
     </Box>
   );
 };
