@@ -13,6 +13,7 @@ import AutoLogin from "components/AutoLogin";
 import Book from "pages/Book";
 import PrivateRouter from "components/PrivateRouter";
 import UserProfile from "pages/UserProfile";
+import SearchBook from "pages/Search";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="user" element={<PrivateRouter />}>
                 <Route index element={<UserProfile />} />
               </Route>
+              <Route path="search" element={<SearchBook />}></Route>
             </Route>
             <Route path="auth" element={<AuthLayout />}>
               <Route index path="login" element={<UserLogin />} />{" "}
