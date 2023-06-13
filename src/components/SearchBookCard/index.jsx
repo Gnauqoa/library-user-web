@@ -47,6 +47,19 @@ const SearchBookCard = ({ id, name, authors, img_url, available_book }) => {
             }}
           >
             {authors[0].name}
+          </Typography>{" "}
+          <Typography
+            sx={{
+              fontSize: 20,
+              fontWeight: 600,
+              fontFamily: "Poppins",
+              color: "#2E4958",
+            }}
+          >
+            Left over:{" "}
+            <span className="text-[#787878]">
+              {available_book}
+            </span>
           </Typography>
         </div>
       </Box>
