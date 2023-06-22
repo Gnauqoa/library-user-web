@@ -22,20 +22,19 @@ const ActivityItem = ({
         alignItems: "center",
         boxShadow: "0px 0px 23px 8px rgba(0,0,0,0.1)",
         borderRadius: "16px",
-        height: "170px",
         width: "100%",
       }}
     >
       {type !== "payFine" ? (
         <>
-          <div className="flex flex-col w-[110px] h-[150px]">
+          <div className="flex flex-col w-[110px] h-[150px] overflow-hidden items-center">
             <img
               src={book.details_book.img_url}
               alt=""
-              className="h-full w-auto object-cover rounded-[12px]"
+              className="h-full w-full object-cover rounded-[12px]"
             />
           </div>
-          <div className="flex flex-col gap-4 pl-[60px]">
+          <div className="flex flex-col gap-4 pl-[30px]">
             <Typography sx={{ fontSize: 28, fontWeight: 500, color: "#000" }}>
               {book.details_book.name}
             </Typography>
@@ -50,11 +49,22 @@ const ActivityItem = ({
               Author:{" "}
               <span className="font-[300]">{` ${book.details_book.authors[0].name}`}</span>
             </Typography>
-            <ShowDate
-              type={type}
-              borrow_date={borrow_date}
-              return_date={return_date}
-            />
+            <div className="flex flex-row gap-3 w-full">
+              <ShowDate
+                type={type}
+                borrow_date={borrow_date}
+                return_date={return_date}
+              />
+              {type === "returnBook" ? (
+                <ShowDate
+                  type={"borrowBook"}
+                  borrow_date={borrow_date}
+                  return_date={return_date}
+                />
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </>
       ) : (
