@@ -6,20 +6,12 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#fbb326",
-      50: "#fff2db",
-      100: "#fedea5",
-      200: "#fdc969",
-      300: "#fbb326",
-      400: "#f9a300",
+      main: "#2E4958",
+      90: "#C3E8FF",
+      80: "#78D1FF",
     },
     secondary: {
-      main: "#056838",
-      50: "#e7f7ed",
-      100: "#c5ead3",
-      200: "#9fddb8",
-      300: "#76d19b",
-      400: "#55c686",
+      main: "#266E96",
     },
     text_neutral: {
       main: "#4A4553",
@@ -60,14 +52,18 @@ const theme = createTheme({
         {
           props: { variant: "primary filled" },
           style: {
+            width: "auto",
+            height: "auto",
+            minHeight: 0,
+            minWidth: 0,
             color: "#FFFFFF",
-            background: "#fbb326",
+            background: "#2E4958",
             ":hover": {
-              background: "#f9a300",
+              background: "#242D3F",
             },
             ":focus": {
-              background: "#f9a300",
-              borderColor: "#fff2db",
+              background: "#242D3F",
+              borderColor: "#2E4958",
             },
             ":disabled": {
               color: "#ffffff",
@@ -78,6 +74,10 @@ const theme = createTheme({
         {
           props: { variant: "primary link" },
           style: {
+            width: "auto",
+            height: "auto",
+            minHeight: 0,
+            minWidth: 0,
             color: "#FFAB00",
             background: "transparent",
             ":hover": {
