@@ -7,10 +7,9 @@ import PageControl from "./PageControl";
 const SearchBook = () => {
   return (
     <Container>
-      <div className="flex flex-row gap-[80px] pt-[40px]">
+      <div className="flex flex-row gap-[40px] pt-[40px] w-full">
         <Filter />
         <ResultSearch />
-
       </div>
     </Container>
   );

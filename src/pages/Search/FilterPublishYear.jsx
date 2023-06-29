@@ -1,30 +1,33 @@
 import { Button, Typography } from "@mui/material";
 import MyCheckBox from "components/MyCheckBox";
 import MyInput from "components/MyInput";
+import MyInputDate from "components/MyInputDate";
+import dayjs from "dayjs";
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getSearchObject } from "services/getSearchObject";
 import validator from "validator";
 
-const FilterNumberOfPage = () => {
+const FIlterPublishYear = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchObject = getSearchObject(searchParams);
-  const [min_number, setMin] = useState("");
-  const [max_number, setMax] = useState("");
+  const [from_year, setFromYear] = useState(null);
+  const [to_year, setToYear] = useState(null);
   const handleApply = () => {
-    if (validator.isNumeric(min_number))
-      searchObject.min_number_of_page = min_number;
-    if (validator.isNumeric(max_number))
-      searchObject.max_number_of_page = max_number;
+    if (from_year) {
+      searchObject.from_year = from_year;
+    } else delete searchObject.from_year;
+    if (to_year) searchObject.to_year = to_year;
+    else delete searchObject.to_year;
     searchObject.page = 1;
     setSearchParams(new URLSearchParams(searchObject));
   };
   const handleReset = () => {
-    setMin("");
-    setMax("");
+    setFromYear(null);
+    setToYear(null);
+    delete searchObject.from_year;
+    delete searchObject.to_year;
     searchObject.page = 1;
-    delete searchObject.min_number_of_page;
-    delete searchObject.max_number_of_page;
     setSearchParams(new URLSearchParams(searchObject));
   };
   return (
@@ -38,29 +41,32 @@ const FilterNumberOfPage = () => {
             fontFamily: "Poppins",
           }}
         >
-          Number of page
+          Publish year
         </Typography>
       </div>
-      <div className="flex flex-row items-center gap-3">
-        <MyInput
-          value={min_number}
+      <div className="flex flex-row items-center gap-1">
+        <MyInputDate
+          views={["year"]}
+          value={from_year}
+          format="YYYY"
           sx={{ p: 0, px: "4px" }}
           onChange={(e) => {
-            if (e.target.value === "" || validator.isNumeric(e.target.value))
-              setMin(e.target.value);
+            setFromYear(e);
           }}
         />
+
         <Typography
           sx={{ fontSize: 16, fontWeight: 400, fontFamily: "Poppins" }}
         >
           to
         </Typography>
-        <MyInput
-          value={max_number}
+        <MyInputDate
+          format="YYYY"
+          views={["year"]}
+          value={to_year}
           sx={{ p: 0, px: "4px" }}
           onChange={(e) => {
-            if (e.target.value === "" || validator.isNumeric(e.target.value))
-              setMax(e.target.value);
+            setToYear(e);
           }}
         />
       </div>
@@ -76,4 +82,4 @@ const FilterNumberOfPage = () => {
   );
 };
 
-export default FilterNumberOfPage;
+export default FIlterPublishYear;

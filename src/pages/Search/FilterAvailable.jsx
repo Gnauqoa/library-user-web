@@ -23,6 +23,7 @@ const FilterAvailable = () => {
       <div className="ml-auto"></div>
       <MyCheckBox
         onChange={() => {
+          searchObject.page = 1;
           searchObject.available =
             searchObject.available === "true" ? "false" : "true";
           setSearchParams(new URLSearchParams(searchObject));

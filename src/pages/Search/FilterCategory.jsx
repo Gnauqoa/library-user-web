@@ -12,6 +12,7 @@ const FilterCategory = () => {
   const searchObject = getSearchObject(searchParams);
 
   const handleChange = (name, index) => {
+    searchObject.page = 1;
     if (index === -1) {
       searchObject.category = [...searchObject.category, name];
       setSearchParams(new URLSearchParams(searchObject));
