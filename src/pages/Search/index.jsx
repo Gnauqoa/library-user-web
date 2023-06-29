@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import React, { useState } from "react";
 import Filter from "./Filter";
 import ResultSearch from "./ResultSearch";
+import PageControl from "./PageControl";
 
 const SearchBook = () => {
   return (
@@ -9,6 +10,7 @@ const SearchBook = () => {
       <div className="flex flex-row gap-[80px] pt-[40px]">
         <Filter />
         <ResultSearch />
+
       </div>
     </Container>
   );
