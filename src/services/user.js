@@ -11,6 +11,16 @@ const AUTHENTICATION_URLS = {
   REGISTER: "/v1/user/",
   ACTIVITY: "/v1/user/current/activity",
   BORROWING_LIST: "/v1/user/current/borrowingBooks",
+  BORROWED_LIST: "/v1/user/current/borrowedBooks",
+};
+export const getBorrowedList = (params) => {
+  return axiosForLibraryAPI
+    .request({
+      url: AUTHENTICATION_URLS.BORROWED_LIST,
+      method: "get",
+      params: params,
+    })
+    .then((res) => res.data);
 };
 export const getActivity = (per_page, page, type, status) => {
   return axiosForLibraryAPI

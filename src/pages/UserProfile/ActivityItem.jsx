@@ -12,6 +12,7 @@ const ActivityItem = ({
   borrow_days,
   book,
   pay_date,
+  status,
 }) => {
   return (
     <Box
@@ -27,11 +28,11 @@ const ActivityItem = ({
     >
       {type !== "payFine" ? (
         <>
-          <div className="flex flex-col w-[110px] h-[150px] overflow-hidden items-center">
+          <div className="flex flex-col min-w-[110px] max-w-[110px] min-h-[150px] max-h-[150px] overflow-hidden items-center justify-center rounded-[8px]">
             <img
               src={book.details_book.img_url}
               alt=""
-              className="h-full w-full object-cover rounded-[12px]"
+              className="h-full  object-cover rounded-[8px]"
             />
           </div>
           <div className="flex flex-col gap-4 pl-[30px]">
@@ -78,11 +79,21 @@ const ActivityItem = ({
         fine={fine}
         max_borrow_days={max_borrow_days}
         fine_pay={fine_pay}
+        borrow_date={borrow_date}
+        status={status}
       />
     </Box>
   );
 };
-const ShowType = ({ type, borrow_days, fine, max_borrow_days, fine_pay }) => {
+const ShowType = ({
+  type,
+  borrow_days,
+  borrow_date,
+  fine,
+  max_borrow_days,
+  fine_pay,
+  status,
+}) => {
   let color,
     text,
     sub_text = null;
@@ -96,8 +107,10 @@ const ShowType = ({ type, borrow_days, fine, max_borrow_days, fine_pay }) => {
       text = "Return";
     }
   } else if (type === "borrowBook") {
-    if (borrow_days > max_borrow_days) {
-      sub_text = `Out ${borrow_days - max_borrow_days} days`;
+    if (!status && dayjs().diff(borrow_date, "day") > max_borrow_days) {
+      sub_text = `Out ${
+        dayjs().diff(borrow_date, "day") - max_borrow_days
+      } days`;
       color = "#FF7171";
       text = "Out of date";
     } else {
@@ -118,6 +131,7 @@ const ShowType = ({ type, borrow_days, fine, max_borrow_days, fine_pay }) => {
             fontWeight: 600,
             color,
             fontFamily: "Poppins",
+            whiteSpace: "nowrap",
           }}
         >
           {sub_text}
@@ -146,6 +160,7 @@ const ShowType = ({ type, borrow_days, fine, max_borrow_days, fine_pay }) => {
             fontWeight: 600,
             color: "#000",
             fontFamily: "Poppins",
+            whiteSpace: "nowrap",
           }}
         >
           {text}

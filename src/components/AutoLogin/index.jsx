@@ -6,7 +6,7 @@ import {
   getAccessTokenFromRefreshToken,
   getCurrentUser,
   validateToken,
-} from "services/userAuth";
+} from "services/user";
 import {
   clearTokens,
   getAccessToken,

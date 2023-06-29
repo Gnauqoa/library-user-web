@@ -1,14 +1,8 @@
 import { Typography } from "@mui/material";
-import useAPI from "hooks/useApi";
 import React from "react";
-import { getBorrowingList } from "services/userAuth";
-import ActivityItem from "./ActivityItem";
+import BorrowingItem from "./BorrowingItem";
 
-const BorrowList = () => {
-  const activityRequest = useAPI({
-    queryFn: getBorrowingList,
-    getNow: true,
-  });
+const BorrowList = ({ getBorrowingRequest }) => {
   return (
     <div className="flex flex-col gap-8 w-full">
       <Typography
@@ -22,8 +16,9 @@ const BorrowList = () => {
         Borrowing
       </Typography>
       <div className="flex flex-col gap-6 items-center w-full">
-        {activityRequest?.response?.data?.items?.map((activity) => (
-          <ActivityItem
+        {getBorrowingRequest?.response?.data?.items?.map((activity) => (
+          <BorrowingItem
+            max_borrow_days={getBorrowingRequest.response.data.max_borrow_days}
             type="borrowBook"
             key={activity.id + activity.type}
             {...activity}

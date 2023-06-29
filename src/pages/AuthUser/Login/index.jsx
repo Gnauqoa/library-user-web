@@ -6,7 +6,7 @@ import { ReactComponent as IconLock } from "assets/icon/icon_lock.svg";
 import MyCheckBox from "components/MyCheckBox";
 import getErrorMessage from "services/validate";
 import { Link } from "react-router-dom";
-import { login } from "services/userAuth";
+import { login } from "services/user";
 import useAPI from "hooks/useApi";
 import { storeUser } from "reducers/userReducer";
 import { setLoginStatus } from "reducers/loginStatusReducer";
