@@ -14,8 +14,13 @@ import {
   removeAccessToken,
 } from "services/localStorage";
 import { axiosForLibraryAPI } from "services/axios";
+import useAPI from "hooks/useApi";
+import { getRule } from "services/search";
+import { setRuleSystem } from "reducers/ruleReducer";
 
 const AutoLogin = () => {
+  const rule = useSelector((state) => state.rule);
+  const getRuleRequest = useAPI({ queryFn: getRule });
   const loginStatus = useSelector((state) => state.loginStatus);
   const dispatch = useDispatch();
   const login = () => {
@@ -61,6 +66,15 @@ const AutoLogin = () => {
   useEffect(() => {
     login();
   }, [loginStatus]);
+  useEffect(() => {
+    if (!rule)
+      getRuleRequest
+        .run()
+        .then((res) => {
+          dispatch(setRuleSystem(res));
+        })
+        .catch((err) => {});
+  }, []);
 };
 
 export default AutoLogin;

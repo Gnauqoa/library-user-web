@@ -1,9 +1,15 @@
 import React from "react";
 import { ReactComponent as IconFilter } from "assets/icon/icon_filter.svg";
 import { SvgIcon, Typography } from "@mui/material";
+
+import FilterCategory from "./FilterCategory";
+import FilterAvailable from "./FilterAvailable";
+import FilterNumberOfPage from "./FilterNumberOfPage";
+import FIlterPublishYear from "./FilterPublishYear";
+
 const Filter = () => {
   return (
-    <div className="flex flex-col gap-[30px] w-full">
+    <div className="flex flex-col gap-[30px] min-w-[20%]">
       <div className="flex flex-row items-center gap-3 ">
         <SvgIcon
           component={IconFilter}
@@ -19,7 +25,12 @@ const Filter = () => {
           Filter search
         </Typography>
       </div>
-      <div className="flex flex-col gap-[15px]"></div>
+      <div className="flex flex-col gap-[15px] w-full">
+        <FilterCategory />
+        <FilterAvailable />
+        <FilterNumberOfPage />
+        <FIlterPublishYear />
+      </div>
     </div>
   );
 };

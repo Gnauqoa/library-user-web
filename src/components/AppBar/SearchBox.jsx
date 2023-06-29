@@ -1,11 +1,17 @@
 import { IconButton, SvgIcon } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ReactComponent as IconSearch } from "assets/icon/icon_search.svg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { getSearchObject } from "services/getSearchObject";
 
 const SearchBox = () => {
   const [book_name, setBookName] = useState("");
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const searchObject = getSearchObject(searchParams);
+  useEffect(() => {
+    if (searchObject?.name) setBookName(searchObject.name);
+  }, [searchParams]);
   return (
     <div className="flex flex-row">
       <div className="flex flex-row w-[600px] items-center gap-4 pl-4 pr-[5px] py-[5px] bg-[#fff] rounded-[25px] overflow-hidden">
