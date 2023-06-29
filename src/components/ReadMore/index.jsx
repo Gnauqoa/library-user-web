@@ -7,12 +7,14 @@ const ReadMore = ({ maxlength = 200, text, ...props }) => {
     return (
       <span {...props}>
         {on ? text : text?.slice(0, maxlength)}
-        <span
-          onClick={toggle}
-          className="text-[#4D809C] font-[700] transition-all cursor-pointer"
-        >
-          {on ? "  Read less" : "  Read more"}
-        </span>
+        {text.length > maxlength && (
+          <span
+            onClick={toggle}
+            className="text-[#4D809C] font-[700] transition-all cursor-pointer"
+          >
+            {on ? "  Read less" : "  Read more"}
+          </span>
+        )}
       </span>
     );
   return <></>;

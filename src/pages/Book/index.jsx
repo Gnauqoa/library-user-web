@@ -69,6 +69,19 @@ const Book = () => {
                   color: "#000",
                 }}
               >
+                Number of pages:{" "}
+                <span className="text-[#2D5A73]">
+                  {bookRequest?.response?.number_of_pages}
+                </span>
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  fontFamily: "Poppins",
+                  color: "#000",
+                }}
+              >
                 Publisher:{" "}
                 <span className="text-[#2D5A73]">
                   {bookRequest?.response?.publisher.name}
@@ -97,14 +110,28 @@ const Book = () => {
                   color: "#000",
                 }}
               >
+                Isbn:{" "}
+                <span className="text-[#2D5A73]">
+                  {bookRequest?.response?.isbn}
+                </span>
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  fontFamily: "Poppins",
+                  color: "#000",
+                }}
+              >
                 Category:{" "}
                 <ReadMore
                   className="text-[#2D5A73]"
+                  maxlength={50}
                   text={
-                    bookRequest?.response?.categories[0] +
-                    bookRequest?.response?.categories
-                      .slice(1)
-                      .map((category) => ` ${category}`)
+                    "" +
+                    bookRequest?.response?.categories.map(
+                      (category) => ` ${category}`
+                    )
                   }
                 />
               </Typography>
@@ -134,9 +161,10 @@ const Book = () => {
                 color: "#2E4958",
               }}
             >
-              Left over:{" "}
+              Available/Total:{" "}
               <span className="text-[#787878]">
-                {bookRequest?.response?.available_book}
+                {bookRequest?.response?.available_book}/
+                {bookRequest?.response?.total_book}
               </span>
             </Typography>
           </div>
