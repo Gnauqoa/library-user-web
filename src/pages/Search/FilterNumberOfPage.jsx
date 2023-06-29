@@ -14,9 +14,7 @@ const FilterNumberOfPage = () => {
     setMin(searchObject.min_number_of_page);
     setMax(searchObject.max_number_of_page);
   }, [searchParams]);
-  useEffect(() => {
-    console.log(min_number, max_number);
-  }, [min_number, max_number]);
+
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-row gap-2 pb-[10px] border-b-[2px] border-[#2E4958]">
