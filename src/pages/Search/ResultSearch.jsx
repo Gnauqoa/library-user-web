@@ -5,7 +5,7 @@ import useAPI from "hooks/useApi";
 import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { searchBook } from "services/search";
-import { getSearchObject } from "./getSearchObject";
+import { getSearchObject } from "../../services/getSearchObject";
 
 const ResultSearch = () => {
   const [searchParams] = useSearchParams();

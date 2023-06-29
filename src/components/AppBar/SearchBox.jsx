@@ -2,7 +2,7 @@ import { IconButton, SvgIcon } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as IconSearch } from "assets/icon/icon_search.svg";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { getSearchObject } from "pages/Search/getSearchObject";
+import { getSearchObject } from "services/getSearchObject";
 
 const SearchBox = () => {
   const [book_name, setBookName] = useState("");

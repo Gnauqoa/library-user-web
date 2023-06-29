@@ -1,27 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { CircularProgress, Typography } from "@mui/material";
 import MyCheckBox from "components/MyCheckBox";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
+import { getSearchObject } from "../../services/getSearchObject";
 
 const FilterCategory = () => {
+  const [show_more, setShowMore] = useState(false);
   const rule = useSelector((state) => state.rule);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchObject = Object.fromEntries([...searchParams]);
-  let category = [];
-  if (searchObject.category)
-    category = searchObject.category.split(",").map((e) => e);
+  const searchObject = getSearchObject(searchParams);
 
-  console.log("", category);
   const handleChange = (name, index) => {
     if (index === -1) {
-      searchObject.category = [...category, name];
+      searchObject.category = [...searchObject.category, name];
       setSearchParams(new URLSearchParams(searchObject));
       return;
     }
     searchObject.category = [
-      ...category.slice(0, index),
-      ...category.slice(index + 1),
+      ...searchObject.category.slice(0, index),
+      ...searchObject.category.slice(index + 1),
     ];
     setSearchParams(new URLSearchParams(searchObject));
   };
@@ -42,16 +40,30 @@ const FilterCategory = () => {
       >
         Categories
       </Typography>
-      {rule.category.map((name) => {
+      {(show_more ? rule.category : rule.category.slice(0, 5)).map((name) => {
         return (
           <CategoryItem
             key={name}
             title={name}
             onChange={handleChange}
-            index={category.findIndex((ele) => ele === name)}
+            index={searchObject.category.findIndex((ele) => ele === name)}
           />
         );
       })}
+      {rule.category.length > 5 && (
+        <Typography
+          onClick={() => setShowMore(!show_more)}
+          sx={{
+            fontSize: 16,
+            fontWeight: 700,
+            color: "2E4958",
+            cursor: "pointer",
+            ":hover": { fontWeight: 700 },
+          }}
+        >
+          {show_more ? "Show less" : "Show more"}
+        </Typography>
+      )}
     </div>
   );
 };
