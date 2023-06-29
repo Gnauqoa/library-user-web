@@ -10,3 +10,12 @@ export const searchBook = async (params) => {
     .then((res) => res.data);
   return data;
 };
+export const getRule = async () => {
+  const { data } = await axiosForLibraryAPI
+    .request({
+      method: "get",
+      url: "/v1/rule",
+    })
+    .then((res) => res.data);
+  return data;
+};
