@@ -2,13 +2,23 @@ import { Container, SvgIcon, Typography } from "@mui/material";
 import { ReactComponent as IconActiveTick } from "assets/icon/icon_check.svg";
 
 import DefaultAvatar from "assets/img/default_avatar.svg";
+import useAPI from "hooks/useApi";
 import React from "react";
+import { getBorrowedList, getBorrowingList } from "services/user";
 import CardInfo from "./CardInfo";
 import UserInfo from "./UserInfo";
 import Activity from "./Activity";
 import BorrowList from "./BorrowList";
 
 const UserProfile = () => {
+  const getBorrowingRequest = useAPI({
+    queryFn: getBorrowingList,
+    getNow: true,
+  });
+  const getBorrowedRequest = useAPI({
+    queryFn: getBorrowedList,
+    getNow: true,
+  });
   return (
     <Container sx={{ paddingY: "100px" }}>
       <div className="flex flex-col gap-6">
@@ -18,12 +28,15 @@ const UserProfile = () => {
         <div className="flex flex-row gap-[70px]">
           <div className="flex flex-row items-center gap-[50px]">
             <Avatar />
-            <CardInfo />
+            <CardInfo
+              getBorrowingRequest={getBorrowingRequest}
+              getBorrowedRequest={getBorrowedRequest}
+            />
           </div>
           <UserInfo />
         </div>
         <div className="flex flex-row w-full gap-8">
-          <BorrowList />
+          <BorrowList getBorrowingRequest={getBorrowingRequest} />
           <Activity />
         </div>
       </div>

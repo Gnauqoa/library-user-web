@@ -1,7 +1,7 @@
 import { Button, CircularProgress, Typography } from "@mui/material";
 import useAPI from "hooks/useApi";
 import React, { useEffect, useState } from "react";
-import { getActivity } from "services/userAuth";
+import { getActivity } from "services/user";
 import ActivityItem from "./ActivityItem";
 import { useCounter } from "@uidotdev/usehooks";
 
@@ -45,7 +45,11 @@ function Activity() {
 
       <div className="flex flex-col gap-6 items-center w-full">
         {activity_list.items.map((activity) => (
-          <ActivityItem key={activity.id + activity.type} {...activity} />
+          <ActivityItem
+            max_borrow_days={activityRequest.response.data.max_borrow_days}
+            key={activity.id + activity.type}
+            {...activity}
+          />
         ))}
         {current_page < activity_list?.total_pages ? (
           !activityRequest.loading && activity_list ? (
