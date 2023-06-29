@@ -1,6 +1,9 @@
 import React from "react";
 import { ReactComponent as IconFilter } from "assets/icon/icon_filter.svg";
 import { SvgIcon, Typography } from "@mui/material";
+
+import FilterCategory from "./FilterCategory";
+
 const Filter = () => {
   return (
     <div className="flex flex-col gap-[30px] w-full">
@@ -19,7 +22,9 @@ const Filter = () => {
           Filter search
         </Typography>
       </div>
-      <div className="flex flex-col gap-[15px]"></div>
+      <div className="flex flex-col gap-[15px]">
+        <FilterCategory />
+      </div>
     </div>
   );
 };

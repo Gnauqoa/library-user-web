@@ -5,10 +5,11 @@ import useAPI from "hooks/useApi";
 import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { searchBook } from "services/search";
+import { getSearchObject } from "./getSearchObject";
 
 const ResultSearch = () => {
   const [searchParams] = useSearchParams();
-  const searchObject = Object.fromEntries([...searchParams]);
+  const searchObject = getSearchObject(searchParams);
   const searchRequest = useAPI({ queryFn: (params) => searchBook(params) });
   useEffect(() => {
     searchRequest.run(searchObject);
@@ -34,7 +35,7 @@ const ResultSearch = () => {
       </div>
       {searchRequest.loading ? <CircularProgress /> : <></>}
       {searchRequest.isFetched ? (
-        <div className="grid grid-cols-5 gap-x-[50px] gap-y-[50px] pb-[50px]">
+        <div className="grid grid-cols-5 gap-x-[50px] pb-[50px]">
           {searchRequest.response.items.map((book) => (
             <SearchBookCard key={book.id} {...book} />
           ))}
