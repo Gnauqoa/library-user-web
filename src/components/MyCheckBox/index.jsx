@@ -2,11 +2,17 @@ import { Box, SvgIcon, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { ReactComponent as IconChecked } from "assets/icon/icon_checked.svg";
 
-const MyCheckBox = ({ label, disabled = false, onChange = () => {}, value = false }) => {
+const MyCheckBox = ({
+  label,
+  disabled = false,
+  onChange = () => {},
+  value = false,
+  free = true,
+}) => {
   const [checked, setChecked] = useState(value);
   const handleClick = () => {
     if (disabled) return;
-    setChecked(!checked);
+    if (free) setChecked(!checked);
     onChange(!checked);
   };
   useEffect(() => {
@@ -52,16 +58,18 @@ const MyCheckBox = ({ label, disabled = false, onChange = () => {}, value = fals
           )}
         </Box>
       </div>
-      <Typography
-        sx={{
-          color: disabled ? "#9D9AA4" : "#1C1A1F",
-          fontSize: 14,
-          fontWeight: 400,
-          paddingTop: "2px",
-        }}
-      >
-        {label}
-      </Typography>
+      {label && (
+        <Typography
+          sx={{
+            color: disabled ? "#9D9AA4" : "#1C1A1F",
+            fontSize: 14,
+            fontWeight: 400,
+            paddingTop: "2px",
+          }}
+        >
+          {label}
+        </Typography>
+      )}
     </div>
   );
 };

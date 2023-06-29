@@ -37,20 +37,33 @@ const ResultSearch = () => {
       </div>
       {searchRequest.loading ? <CircularProgress /> : <></>}
       {searchRequest.isFetched ? (
-        <>
-          <div className="grid grid-cols-5 gap-x-[50px] ">
-            {searchRequest.response.items.map((book) => (
-              <SearchBookCard key={book.id} {...book} />
-            ))}
-          </div>
-          <PageControl
-            total_pages={searchRequest.response.total_pages}
-            total_items={searchRequest.response.total_items}
-            current_page={current_page}
-            setCurrentPage={setCurrentPage}
-            per_page={searchRequest.response.per_page}
-          />
-        </>
+        searchRequest.response.total_items ? (
+          <>
+            <div className="grid grid-cols-5 gap-x-[50px] ">
+              {searchRequest.response.items.map((book) => (
+                <SearchBookCard key={book.id} {...book} />
+              ))}
+            </div>
+            <PageControl
+              total_pages={searchRequest.response.total_pages}
+              total_items={searchRequest.response.total_items}
+              current_page={current_page}
+              setCurrentPage={setCurrentPage}
+              per_page={searchRequest.response.per_page}
+            />
+          </>
+        ) : (
+          <Typography
+            sx={{
+              fontSize: 20,
+              fontWeight: 400,
+              color: "#2E4958",
+              fontFamily: "Poppins",
+            }}
+          >
+            No result is match, try change your filter or name
+          </Typography>
+        )
       ) : (
         <></>
       )}

@@ -15,6 +15,7 @@ const MyInput = ({
   value,
   error_message = "",
   onBlur,
+  defaultValue,
   ...props
 }) => {
   const [invisible, setInvisible] = useState(false);
@@ -40,7 +41,7 @@ const MyInput = ({
       )}
       <Input
         onBlur={onBlur}
-        defaultValue={value}
+        defaultValue={defaultValue}
         autoComplete={"none"}
         disabled={disabled}
         onChange={onChange}
@@ -58,6 +59,7 @@ const MyInput = ({
             boxShadow: " 0px 0px 5px 5px #C3E8FF",
           },
           transition: "all 0.15s",
+          ...sx,
         }}
         placeholder={placeholder}
         disableUnderline={true}

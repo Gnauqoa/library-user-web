@@ -3,6 +3,8 @@ import { ReactComponent as IconFilter } from "assets/icon/icon_filter.svg";
 import { SvgIcon, Typography } from "@mui/material";
 
 import FilterCategory from "./FilterCategory";
+import FilterAvailable from "./FilterAvailable";
+import FilterNumberOfPage from "./FilterNumberOfPage";
 
 const Filter = () => {
   return (
@@ -24,6 +26,8 @@ const Filter = () => {
       </div>
       <div className="flex flex-col gap-[15px]">
         <FilterCategory />
+        <FilterAvailable />
+        <FilterNumberOfPage />
       </div>
     </div>
   );

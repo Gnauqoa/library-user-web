@@ -13,7 +13,6 @@ const PageControl = ({ total_pages }) => {
     searchObject.page = new_page;
     setSearchParams(new URLSearchParams(searchObject));
   };
-  console.log(current_page);
   return (
     <div className="flex flex-row justify-center items-center gap-3">
       <IconButton

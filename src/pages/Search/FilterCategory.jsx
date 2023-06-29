@@ -29,7 +29,7 @@ const FilterCategory = () => {
     <div className="flex flex-col gap-2">
       <Typography
         sx={{
-          fontSize: 12,
+          fontSize: 16,
           fontWeight: 700,
           color: "#2E4958",
           fontFamily: "Poppins",
@@ -69,7 +69,7 @@ const FilterCategory = () => {
 };
 const CategoryItem = ({ title, onChange, index = -1 }) => {
   return (
-    <div className="flex flex-row items-center">
+    <div className="flex flex-row items-center gap-2">
       <MyCheckBox
         value={index !== -1}
         onChange={() => onChange(title, index)}
