@@ -4,11 +4,14 @@ import {
   MenuItem,
   FormControl,
   SvgIcon,
+  styled,
 } from "@mui/material";
 import React from "react";
 import { ReactComponent as IconArrowDown } from "assets/icon/icon_arrow_down.svg";
 
 import { useToggle } from "@uidotdev/usehooks";
+import InputBase from "@mui/material/InputBase";
+
 
 const SelectAtom = ({
   label,
@@ -17,23 +20,28 @@ const SelectAtom = ({
   onChange,
   optionList = [],
   placeholder,
+  sx,
+  input,
   ...props
 }) => {
   const [open, toggle] = useToggle();
   return (
     <FormControl className="flex flex-col w-full gap-2">
-      <div className="flex flex-row gap-2">
-        <Typography
-          sx={{
-            fontSize: 14,
-            fontWeight: 500,
-            color: "#121115",
-          }}
-        >
-          {label}
-        </Typography>
-        <img alt="" className="max-w-[14px] maw-h-[14px]" src={labelIcon} />
-      </div>
+      {label && (
+        <div className="flex flex-row gap-2">
+          <Typography
+            sx={{
+              fontSize: 14,
+              fontWeight: 500,
+              color: "#121115",
+            }}
+          >
+            {label}
+          </Typography>
+          <img alt="" className="max-w-[14px] maw-h-[14px]" src={labelIcon} />
+        </div>
+      )}
+
       <div className="flex flex-col ">
         <Select
           onOpen={toggle}
@@ -63,6 +71,7 @@ const SelectAtom = ({
           sx={{
             padding: "0px",
             "&.MuiOutlinedInput-root": {
+              borderWidth: 0,
               "& fieldset": {
                 borderColor: "#DEDDE1",
                 borderRadius: "12px",
@@ -78,11 +87,13 @@ const SelectAtom = ({
                 boxShadow: "0px 0px 5px 5px #C3E8FF",
               },
             },
+            ...sx,
           }}
           onChange={onChange}
           inputProps={{
             "aria-label": "Without label",
           }}
+          input={input}
         >
           {optionList.map((data, index) => (
             <MenuItem

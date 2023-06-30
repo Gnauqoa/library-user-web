@@ -15,7 +15,6 @@ const FilterAvailable = () => {
           fontSize: 16,
           fontWeight: 700,
           color: "#2E4958",
-          fontFamily: "Poppins",
         }}
       >
         Available to borrow

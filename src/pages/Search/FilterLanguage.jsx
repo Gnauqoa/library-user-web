@@ -1,31 +1,28 @@
-import React, { useState } from "react";
 import { CircularProgress, Typography } from "@mui/material";
 import MyCheckBox from "components/MyCheckBox";
+import useCustomSearchParams from "hooks/useCustomSearchParams";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useSearchParams } from "react-router-dom";
-import { getSearchObject } from "../../services/getSearchObject";
 
-const FilterCategory = () => {
+const FilterLanguages = () => {
+  const [searchParams, setSearchParams] = useCustomSearchParams();
   const [show_more, setShowMore] = useState(false);
   const rule = useSelector((state) => state.rule);
-  const [searchParams, setSearchParams] = useSearchParams();
-  const searchObject = getSearchObject(searchParams);
-
   const handleChange = (name, index) => {
-    searchObject.page = 1;
+    searchParams.page = 1;
     if (index === -1) {
-      searchObject.category = [...searchObject.category, name];
-      setSearchParams(new URLSearchParams(searchObject));
+      searchParams.languages = [...searchParams.languages, name];
+      setSearchParams(searchParams);
       return;
     }
-    searchObject.category = [
-      ...searchObject.category.slice(0, index),
-      ...searchObject.category.slice(index + 1),
+    searchParams.languages = [
+      ...searchParams.languages.slice(0, index),
+      ...searchParams.languages.slice(index + 1),
     ];
-    setSearchParams(new URLSearchParams(searchObject));
+    setSearchParams(searchParams);
   };
-
   if (!rule) return <CircularProgress />;
+
   return (
     <div className="flex flex-col gap-2">
       <Typography
@@ -38,19 +35,19 @@ const FilterCategory = () => {
           mb: "2px",
         }}
       >
-        Categories
-      </Typography>
-      {(show_more ? rule.category : rule.category.slice(0, 5)).map((name) => {
+        Languages
+      </Typography>{" "}
+      {(show_more ? rule.languages : rule.languages.slice(0, 5)).map((name) => {
         return (
-          <CategoryItem
+          <LanguageItem
             key={name}
             title={name}
             onChange={handleChange}
-            index={searchObject.category.findIndex((ele) => ele === name)}
+            index={searchParams.languages.findIndex((ele) => ele === name)}
           />
         );
       })}
-      {rule.category.length > 5 && (
+      {rule.languages.length > 5 && (
         <Typography
           onClick={() => setShowMore(!show_more)}
           sx={{
@@ -67,7 +64,7 @@ const FilterCategory = () => {
     </div>
   );
 };
-const CategoryItem = ({ title, onChange, index = -1 }) => {
+const LanguageItem = ({ title, onChange, index = -1 }) => {
   return (
     <div className="flex flex-row items-center gap-2">
       <MyCheckBox
@@ -80,5 +77,4 @@ const CategoryItem = ({ title, onChange, index = -1 }) => {
     </div>
   );
 };
-
-export default FilterCategory;
+export default FilterLanguages;

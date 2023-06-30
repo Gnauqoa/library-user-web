@@ -6,6 +6,7 @@ import FilterCategory from "./FilterCategory";
 import FilterAvailable from "./FilterAvailable";
 import FilterNumberOfPage from "./FilterNumberOfPage";
 import FIlterPublishYear from "./FilterPublishYear";
+import FilterLanguages from "./FilterLanguage";
 
 const Filter = () => {
   return (
@@ -18,7 +19,6 @@ const Filter = () => {
             width: 26,
             height: 26,
             color: "#2E4958",
-            fontFamily: "Poppins",
           }}
         />
         <Typography sx={{ fontSize: 20, fontWeight: 500, color: "#2E4958" }}>
@@ -30,6 +30,7 @@ const Filter = () => {
         <FilterAvailable />
         <FilterNumberOfPage />
         <FIlterPublishYear />
+        <FilterLanguages />
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ const ResultSearch = () => {
     searchRequest.run(searchObject);
   }, [searchParams]);
   return (
-    <div className="flex flex-col gap-10 min-w-[80%] pb-[50px]">
+    <div className="flex flex-col gap-10 min-w-[80%]">
       <div className="flex flex-row items-center gap-3">
         <SvgIcon
           component={IconInfo}
