@@ -6,6 +6,7 @@ import FilterCategory from "./FilterCategory";
 import FilterAvailable from "./FilterAvailable";
 import FilterNumberOfPage from "./FilterNumberOfPage";
 import FIlterPublishYear from "./FilterPublishYear";
+import FilterLanguages from "./FilterLanguage";
 
 const Filter = () => {
   return (
@@ -30,6 +31,7 @@ const Filter = () => {
         <FilterAvailable />
         <FilterNumberOfPage />
         <FIlterPublishYear />
+        <FilterLanguages />
       </div>
     </div>
   );
