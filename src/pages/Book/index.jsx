@@ -114,6 +114,26 @@ const Book = () => {
                 <span className="text-[#2D5A73]">
                   {bookRequest?.response?.isbn}
                 </span>
+              </Typography>{" "}
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  fontFamily: "Poppins",
+                  color: "#000",
+                }}
+              >
+                Languages:{" "}
+                <ReadMore
+                  className="text-[#2D5A73]"
+                  maxlength={50}
+                  text={
+                    "" +
+                    bookRequest?.response?.languages.map(
+                      (language) => ` ${language}`
+                    )
+                  }
+                />
               </Typography>
               <Typography
                 sx={{
@@ -131,26 +151,6 @@ const Book = () => {
                     "" +
                     bookRequest?.response?.categories.map(
                       (category) => ` ${category}`
-                    )
-                  }
-                />
-              </Typography>
-              <Typography
-                sx={{
-                  fontSize: 16,
-                  fontWeight: 400,
-                  fontFamily: "Poppins",
-                  color: "#000",
-                }}
-              >
-                Languages:{" "}
-                <ReadMore
-                  className="text-[#2D5A73]"
-                  maxlength={50}
-                  text={
-                    "" +
-                    bookRequest?.response?.languages.map(
-                      (language) => ` ${language}`
                     )
                   }
                 />
