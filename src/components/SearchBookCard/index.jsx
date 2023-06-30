@@ -44,7 +44,6 @@ const SearchBookCard = ({
               fontSize: 16,
               fontWeight: 400,
               color: "#000",
-              fontFamily: "Poppins",
             }}
           >
             {name}
@@ -54,7 +53,6 @@ const SearchBookCard = ({
               fontSize: 12,
               fontWeight: 300,
               color: "#000",
-              fontFamily: "Poppins",
             }}
           >
             {authors[0].name}
@@ -63,7 +61,6 @@ const SearchBookCard = ({
             sx={{
               fontSize: 14,
               fontWeight: 600,
-              fontFamily: "Poppins",
               color: "#2E4958",
             }}
           >
@@ -76,7 +73,6 @@ const SearchBookCard = ({
             sx={{
               fontSize: 14,
               fontWeight: 600,
-              fontFamily: "Poppins",
               color: "#2E4958",
             }}
           >
@@ -87,7 +83,6 @@ const SearchBookCard = ({
             sx={{
               fontSize: 14,
               fontWeight: 600,
-              fontFamily: "Poppins",
               color: "#2E4958",
             }}
           >

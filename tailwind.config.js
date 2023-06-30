@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Poppins", "sans-serif"],
-        Poppins: ["Poppins", "sans-serif"],
+        sans: ["Monoton", "cursive"],
+        Poppins: ["Monoton", "cursive"],
       },
       spacing: {
         72: "72px",
