@@ -14,11 +14,11 @@ const HorizontalScroll = ({ children }) => {
     },
   });
   const clickLeftArrow = () => {
-    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft - 100;
+    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft - 330;
     setScrollBarLoc(ScrollBar.current.scrollLeft);
   };
   const clickRightArrow = () => {
-    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft + 100;
+    ScrollBar.current.scrollLeft = ScrollBar.current.scrollLeft + 330;
     setScrollBarLoc(ScrollBar.current.scrollLeft);
   };
   const onScroll = (e) => {

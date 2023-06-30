@@ -35,7 +35,6 @@ const FilterNumberOfPage = () => {
             fontSize: 16,
             fontWeight: 700,
             color: "#2E4958",
-            fontFamily: "Poppins",
           }}
         >
           Number of page
@@ -50,11 +49,7 @@ const FilterNumberOfPage = () => {
               setMin(e.target.value);
           }}
         />
-        <Typography
-          sx={{ fontSize: 16, fontWeight: 400, fontFamily: "Poppins" }}
-        >
-          to
-        </Typography>
+        <Typography sx={{ fontSize: 16, fontWeight: 400 }}>to</Typography>
         <MyInput
           value={max_number}
           sx={{ p: 0, px: "4px" }}

@@ -34,7 +34,6 @@ const BookCard = ({
       <div className="flex flex-col min-w-[35%] gap-3">
         <Typography
           sx={{
-            fontFamily: "Poppins",
             fontSize: 16,
             fontWeight: 400,
             color: "#0D0842",
@@ -47,7 +46,6 @@ const BookCard = ({
             fontSize: 12,
             fontWeight: 300,
             color: "#000",
-            fontFamily: "Poppins",
           }}
         >
           {authors[0].name}
@@ -56,7 +54,6 @@ const BookCard = ({
           sx={{
             fontSize: 14,
             fontWeight: 600,
-            fontFamily: "Poppins",
             color: "#2E4958",
           }}
         >

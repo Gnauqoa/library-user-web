@@ -33,7 +33,6 @@ const FilterCategory = () => {
           fontSize: 16,
           fontWeight: 700,
           color: "#2E4958",
-          fontFamily: "Poppins",
           pb: "10px",
           borderBottom: "2px solid #2E4958",
           mb: "2px",
