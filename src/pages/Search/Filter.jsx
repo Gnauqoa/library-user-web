@@ -19,7 +19,6 @@ const Filter = () => {
             width: 26,
             height: 26,
             color: "#2E4958",
-            fontFamily: "Poppins",
           }}
         />
         <Typography sx={{ fontSize: 20, fontWeight: 500, color: "#2E4958" }}>

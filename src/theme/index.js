@@ -2,7 +2,7 @@ import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   fontFamily: {
-    fontFamily: "'Poppins', sans-serif",
+    fontFamily: "'Monoton', sans-serif",
   },
   palette: {
     primary: {
