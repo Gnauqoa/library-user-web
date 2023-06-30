@@ -135,6 +135,26 @@ const Book = () => {
                   }
                 />
               </Typography>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 400,
+                  fontFamily: "Poppins",
+                  color: "#000",
+                }}
+              >
+                Languages:{" "}
+                <ReadMore
+                  className="text-[#2D5A73]"
+                  maxlength={50}
+                  text={
+                    "" +
+                    bookRequest?.response?.languages.map(
+                      (language) => ` ${language}`
+                    )
+                  }
+                />
+              </Typography>
             </div>
             <div className="flex flex-col gap-5">
               <Typography
