@@ -7,6 +7,7 @@ import { getRecommend } from "services/home";
 
 const RecommendBook = () => {
   const recommendBookRequest = useAPI({ queryFn: getRecommend, getNow: true });
+  console.log(recommendBookRequest)
   return (
     <div className="flex flex-col ">
       <Typography

@@ -14,7 +14,7 @@ export const getTopBook = async () => {
 };
 export const getRecommend = async () => {
   const { data } = await axiosForLibraryAPI
-    .get(`/v1/book?per_page=20&page=1&type=hot`)
+    .get(`/v1/book?per_page=20&page=1&type=forme`)
     .then((res) => res.data);
   return data;
 };

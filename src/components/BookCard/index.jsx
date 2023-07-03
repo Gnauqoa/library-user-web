@@ -28,8 +28,8 @@ const BookCard = ({
       sx={{ ":hover": { boxShadow: "0px 0px 14px 6px rgba(0,0,0,0.1)" } }}
       className="flex flex-row min-w-[400px] relative gap-5 p-4 rounded-[12px] overflow-hidden"
     >
-      <div className="h-full min-w-[180px] max-w-[180px] overflow-hidden flex flex-col items-center justify-center">
-        <img src={img_url} alt="" className="h-[250px] w-auto object-cover " />
+      <div className="h-full min-w-[190px] max-w-[190px] overflow-hidden flex flex-col items-center justify-center">
+        <img src={img_url} alt="" className="h-auto w-full object-cover " />
       </div>
       <div className="flex flex-col min-w-[35%] gap-3">
         <Typography
