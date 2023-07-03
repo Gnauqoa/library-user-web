@@ -31,8 +31,15 @@ const ResultSearch = () => {
             fontFamily: "Poppins",
           }}
         >
-          Search result for
-          <span className="text-[#266E96]"> {searchObject.name}</span>
+          {searchObject.name
+            ? "Search result for name"
+            : searchObject.author_name
+            ? "Search result for author"
+            : "Search result for isbn "}{" "}
+
+          <span className="text-[#266E96]">
+            {searchObject.name || searchObject.author_name || searchObject.isbn}
+          </span>
         </Typography>
       </div>
       {searchRequest.loading ? <CircularProgress /> : <></>}

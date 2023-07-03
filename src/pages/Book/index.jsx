@@ -7,7 +7,7 @@ import useAPI from "hooks/useApi";
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getBookById } from "services/book";
-import { getNewBook } from "services/home";
+import { getNewBook, getRecommend } from "services/home";
 
 const Book = () => {
   const { current_book_id } = useParams();
@@ -195,7 +195,7 @@ const Book = () => {
   );
 };
 const Suggest = () => {
-  const suggestRequest = useAPI({ queryFn: getNewBook, getNow: true });
+  const suggestRequest = useAPI({ queryFn: getRecommend, getNow: true });
   if (suggestRequest.loading) return <CircularProgress />;
   return (
     <div className="w-full bg-[#fff] py-[70px]">
