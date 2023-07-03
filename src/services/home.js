@@ -8,7 +8,7 @@ export const getNewBook = async () => {
 };
 export const getTopBook = async () => {
   const { data } = await axiosForLibraryAPI
-    .get(`/v1/book?per_page=20&page=1&type=new`)
+    .get(`/v1/book?per_page=20&page=1&type=top`)
     .then((res) => res.data);
   return data;
 };
